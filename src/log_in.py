@@ -5,7 +5,7 @@ import os
 # Prompt user to log in or create a new user
 def start():
     print("Welcome to the Terminal Battle Game!")
-    print("Do you have an account?")
+    print("Do you have an existing character?")
     print("1. Yes")
     print("2. No")
     choice = input("Enter your choice: ")
@@ -30,13 +30,13 @@ def start():
         current_user = create_user()
         return current_user
     else:
-        print("Invalid choice, please try again.")
+        print("Invalid input, please try again.")
         start()
 
 
 # Create a new user and export to a JSON file
 def create_user() -> dict:
-    username = input("Enter a username: ")
+    username = input("Enter a hero name: ")
     user_data = "./src/user_data/users.json"
     os.makedirs(os.path.dirname(user_data), exist_ok=True)
 
@@ -49,7 +49,7 @@ def create_user() -> dict:
 
     # Check if username already exists
     if any(user["username"] == username for user in users):
-        print("Username already exists. Please choose a different username.")
+        print("Hero name already exists. Please choose a different name.")
         create_user()
     else:
         # Append new user and write back to file
@@ -62,7 +62,7 @@ def create_user() -> dict:
 
 # Log in to existing user and import user data from JSON file
 def log_in() -> dict:
-    username = input("Enter your username: ")
+    username = input("Enter your hero name: ")
     user_data = "./src/user_data/users.json"
 
     # Load existing users
@@ -79,5 +79,5 @@ def log_in() -> dict:
         return current_user
         
     else:
-        print("\nUsername not found. Please try again.\n")
+        print("\nHero not found. Please try again.\n")
         start()
