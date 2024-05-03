@@ -1,8 +1,26 @@
+import weapons
+
 class Character:
     def __init__(self, name: str, health: int, max_health=100):
         self.name = name
         self.health = health
         self.health_max = max_health
 
+        self.weapon = weapons.fists
+
 class Hero(Character):
-    pass
+    def __init__(self, name: str, health: int, max_health=100):
+        super().__init__(name, health, max_health)
+        self.inventory = []
+        self.default_weapon = self.weapon
+
+    def equip(self, weapon) -> None:
+        self.weapon = weapon
+        print(f"{self.name} equipped a(n) {self.weapon.name}!")
+
+    def drop(self) -> None:
+        print(f"{self.name} dropped {self.weapon.name}!")
+        self.weapon = self.default_weapon
+
+    def swap_weapon(self) -> None:
+        print(f"{self.name} swapped the {self.weapon.name}")

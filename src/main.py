@@ -1,3 +1,4 @@
+from locations import town
 from log_in import start
 from initiate import initiate
 
@@ -16,7 +17,7 @@ def run():
         print(current_user)
         # Once progress is == 1, bring player to town square
         if current_user["progress"] == 1:
-            # main_menu(current_user)
+            town(current_user)
             print("Town Square")
         else:
             print("Game Over")
