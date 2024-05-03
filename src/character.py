@@ -3,3 +3,6 @@ class Character:
         self.name = name
         self.health = health
         self.health_max = max_health
+
+class Hero(Character):
+    pass

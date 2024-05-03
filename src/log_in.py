@@ -17,8 +17,7 @@ def start():
         or choice == "y"
         or choice == "Y"
     ):
-        current_user = log_in()
-        return current_user
+        return log_in()
     elif (
         choice == "2"
         or choice == "no"
@@ -27,8 +26,7 @@ def start():
         or choice == "n"
         or choice == "N"
     ):
-        current_user = create_user()
-        return current_user
+        return create_user()
     else:
         print("Invalid input, please try again.")
         start()
@@ -56,7 +54,7 @@ def create_user() -> dict:
         users.append({"username": username, "progress": 0, "inventory": []})
         with open(user_data, "w", encoding="utf-8") as file:
             json.dump(users, file, indent=4)
-        current_user = users[-1]
+        current_user = next(user for user in users if user["username"] == username)
         return current_user
 
 
