@@ -15,10 +15,19 @@ def initiate(current_user: dict):
           """)
     input("Press Enter to continue...")
     current_user["progress"] = 1
-    # update progress to users.json
+    # read the users.json file
     with open("src/user_data/users.json", "r", encoding="utf-8") as file:
         users = json.load(file)
+
+    # update the progress of the current user
+    for user in users:
+        if user["username"] == current_user["username"]:
+            user["progress"] = 1
+            break
+
+    # write the updated users back to the file
     with open("src/user_data/users.json", "w", encoding="utf-8") as file:
         json.dump(users, file, indent=4)
+
 
     return current_user
