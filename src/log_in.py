@@ -17,7 +17,8 @@ def start():
         or choice == "y"
         or choice == "Y"
     ):
-        log_in()
+        current_user = log_in()
+        return current_user
     elif (
         choice == "2"
         or choice == "no"
@@ -26,14 +27,15 @@ def start():
         or choice == "n"
         or choice == "N"
     ):
-        create_user()
+        current_user = create_user()
+        return current_user
     else:
         print("Invalid choice, please try again.")
         start()
 
 
 # Create a new user and export to a JSON file
-def create_user():
+def create_user() -> dict:
     username = input("Enter a username: ")
     user_data = "./src/user_data/users.json"
     os.makedirs(os.path.dirname(user_data), exist_ok=True)
@@ -51,13 +53,15 @@ def create_user():
         create_user()
     else:
         # Append new user and write back to file
-        users.append({"username": username, "inventory": []})
+        users.append({"username": username, "progress": 0, "inventory": []})
         with open(user_data, "w", encoding="utf-8") as file:
             json.dump(users, file, indent=4)
+        current_user = users[-1]
+        return current_user
 
 
 # Log in to existing user and import user data from JSON file
-def log_in():
+def log_in() -> dict:
     username = input("Enter your username: ")
     user_data = "./src/user_data/users.json"
 
@@ -70,7 +74,10 @@ def log_in():
 
     # Check if username exists
     if any(user["username"] == username for user in users):
-        print("Welcome, Hero " + username + "!")
+        current_user = next(user for user in users if user["username"] == username)
+        print("Welcome back, Hero " + username + "!")
+        return current_user
+        
     else:
         print("\nUsername not found. Please try again.\n")
         start()
