@@ -30,7 +30,29 @@ def town(current_user: dict):
         town(current_user)
 
 def shop():
-    pass
+    print("""
+          -+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+          Welcome to the shop! 
+          
+          You can:
+          1. Buy weapons
+          2. Sell weapons
+          3. View Inventory
+          4. Exit
+          -+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+          """)
+    choice = input("Enter a number to select an option: ")
+    if choice == "1":
+        print("Buy weapons")
+    elif choice == "2":
+        print("Sell weapons")
+    elif choice == "3":
+        print("Inventory")
+    elif choice == "4":
+        print("Exit")
+    else:
+        print("Invalid input. Please try again.")
+        shop()
 
 def scout():
     pass
