@@ -19,7 +19,7 @@ def town(current_user: dict):
         print("Shop")
         shop(current_user)
     elif choice == "2":
-        print("Scout")
+        scout(current_user)
     elif choice == "3":
         if battle(current_user):
             current_user["progress"] += 1
@@ -58,8 +58,19 @@ def shop(current_user: dict):
         print("Invalid input. Please try again.")
         return shop(current_user)
 
-def scout():
-    pass
+def scout(current_user: dict):
+    if current_user["progress"] == 1:
+        print("You see a Goblin in the distance.")
+    elif current_user["progress"] == 2:
+        print("You see a flying bat in the distance.")
+    elif current_user["progress"] == 3:
+        print("You see a giant spider in the distance.")
+    elif current_user["progress"] == 4:
+        print("You see a dragon in the distance.")
+    elif current_user["progress"] == 5:
+        print("You see the evil wizard in the distance.")
+    else:
+        sys.exit("ERROR: Invalid progress")
 
 def inventory(current_user: dict):
     return current_user["inventory"]
