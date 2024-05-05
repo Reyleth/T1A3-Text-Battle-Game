@@ -4,6 +4,7 @@ import os
 
 # Prompt user to log in or create a new user
 def start():
+    current_user = {}
     print("Welcome to the Terminal Battle Game!")
     print("Do you have an existing character?")
     print("1. Yes")
@@ -48,7 +49,7 @@ def create_user() -> dict:
     # Check if username already exists
     if any(user["username"] == username for user in users):
         print("Hero name already exists. Please choose a different name.")
-        create_user()
+        return create_user()
     else:
         # Append new user and write back to file
         users.append({"username": username, "progress": 0, "inventory": []})
@@ -74,8 +75,7 @@ def log_in() -> dict:
     if any(user["username"] == username for user in users):
         current_user = next(user for user in users if user["username"] == username)
         print("Welcome back, Hero " + username + "!")
-        return current_user
-        
+        return current_user        
     else:
         print("\nHero not found. Please try again.\n")
-        start()
+        return start()

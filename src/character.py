@@ -24,3 +24,9 @@ class Hero(Character):
 
     def swap_weapon(self) -> None:
         print(f"{self.name} swapped the {self.weapon.name}")
+
+class Enemy(Character):
+    def __init__(self, name: str, health: int, weapon: str,) -> None:
+        super().__init__(name=name, health=health)
+    
+        self.weapon = weapon

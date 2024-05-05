@@ -16,12 +16,13 @@ def town(current_user: dict):
     choice = input("Enter a number to select an option: ")
     if choice == "1":
         print("Shop")
+        shop(current_user)
     elif choice == "2":
         print("Scout")
     elif choice == "3":
         print("Battle")
     elif choice == "4":
-        print("Inventory")
+        print(inventory(current_user))
     elif choice == "5":
         print("Log out")
         sys.exit("Thank you for playing!")
@@ -29,7 +30,7 @@ def town(current_user: dict):
         print("Invalid input. Please try again.")
         town(current_user)
 
-def shop():
+def shop(current_user: dict):
     print("""
           -+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
           Welcome to the shop! 
@@ -47,12 +48,12 @@ def shop():
     elif choice == "2":
         print("Sell weapons")
     elif choice == "3":
-        print("Inventory")
+        print(inventory(current_user))
     elif choice == "4":
         print("Exit")
     else:
         print("Invalid input. Please try again.")
-        shop()
+        return shop(current_user)
 
 def scout():
     pass
@@ -60,5 +61,5 @@ def scout():
 def battle():
     pass
 
-def inventory():
-    pass
+def inventory(current_user: dict):
+    return current_user["inventory"]
