@@ -11,7 +11,7 @@ class HealthBar:
     symbol_remaining: str = "█"
     symbol_lost: str = "_"
     barrier: str = "|"
-    colors: dict = {
+    colours: dict = {
         "red": "\033[91m",
         "purple": "\33[95m",
         "blue": "\33[34m",
@@ -28,8 +28,8 @@ class HealthBar:
     def __init__(self,
                  entity,
                  length: int = 20,
-                 is_colored: bool = True,
-                 color: str = "") -> None:
+                 is_coloured: bool = True,
+                 colour: str = "") -> None:
         """
         Initialize a HealthBar object.
 
@@ -44,8 +44,8 @@ class HealthBar:
         self.max_value = entity.health_max
         self.current_value = entity.health
 
-        self.is_colored = is_colored
-        self.color = self.colors.get(color) or self.colors["default"]
+        self.is_coloured = is_coloured
+        self.color = self.colours.get(colour) or self.colours["default"]
 
     def update(self) -> None:
         """
@@ -61,8 +61,8 @@ class HealthBar:
         lost_bars = self.length - remaining_bars
         print(f"{self.entity.name}'s HEALTH: {self.entity.health}/{self.entity.health_max}")
         print(f"{self.barrier}"
-              f"{self.color if self.is_colored else ''}"
+              f"{self.color if self.is_coloured else ''}"
               f"{remaining_bars * self.symbol_remaining}"
               f"{lost_bars * self.symbol_lost}"
-              f"{self.colors['default'] if self.is_colored else ''}"
+              f"{self.colours['default'] if self.is_coloured else ''}"
               f"{self.barrier}")

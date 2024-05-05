@@ -7,7 +7,7 @@ class Character:
         self.health = health
         self.health_max = max_health
 
-        self.weapon = weapons.fists
+        self.weapon = weapons.rusty_sword
 
     def attack(self, target) -> None:
         target.health -= self.weapon.damage
@@ -20,6 +20,7 @@ class Hero(Character):
         super().__init__(name, health, max_health)
         self.inventory = []
         self.default_weapon = self.weapon
+        self.health_bar = HealthBar(self, colour="green")
 
     def equip(self, weapon) -> None:
         self.weapon = weapon
@@ -37,3 +38,4 @@ class Enemy(Character):
         super().__init__(name=name, health=health)
     
         self.weapon = weapon
+        self.health_bar = HealthBar(self, colour="red")

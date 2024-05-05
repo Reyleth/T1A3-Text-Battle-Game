@@ -1,5 +1,6 @@
 import sys
 from battle import battle
+from weapons import rusty_sword
 
 def town(current_user: dict):
     print("""
@@ -21,7 +22,7 @@ def town(current_user: dict):
     elif choice == "2":
         scout(current_user)
     elif choice == "3":
-        if battle(current_user):
+        if battle(current_user, current_weapon=rusty_sword):
             current_user["progress"] += 1
             town(current_user)
     elif choice == "4":

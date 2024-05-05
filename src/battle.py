@@ -1,9 +1,10 @@
 from character import Hero, Enemy
+import weapons
 
-def battle(current_user: dict):
+def battle(current_user: dict, current_weapon: str="Rusty Sword"):
     hero = Hero(current_user["username"], 100)
-    hero.equip("current_user['inventory'][0]")
-    enemy = Enemy(name="Goblin", health=100, weapon="Sword")
+    hero.equip(current_weapon)
+    enemy = Enemy(name="Goblin", health=100, weapon=weapons.rusty_sword)
 
     while hero.health > 0 and enemy.health > 0:
         print(f"{hero.name} health: {hero.health}")
@@ -14,6 +15,9 @@ def battle(current_user: dict):
         if choice == "1":
             hero.attack(enemy)
             enemy.attack(hero)
+            # Show health bar
+            hero.health_bar.draw()
+            enemy.health_bar.draw()
         elif choice == "2":
             print("You ran away!")
             break
