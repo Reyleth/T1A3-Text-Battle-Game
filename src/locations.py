@@ -1,8 +1,10 @@
 import sys
 from battle import battle
 from save_data import save_data
+from utilities import clear_screen
 
 def town(current_user: dict):
+    clear_screen()
     print("""
           -+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
           You are now in the town of Pythonland. 
@@ -17,28 +19,31 @@ def town(current_user: dict):
           """)
     choice = input("Enter a number to select an option: ")
     if choice == "1":
-        print("Shop")
+        clear_screen()
         shop(current_user)
     elif choice == "2":
+        clear_screen()
         scout(current_user)
     elif choice == "3":
+        clear_screen()
         if battle(current_user):
             current_user.progress += 1
             save_data(current_user)
             town(current_user)
     elif choice == "4":
+        clear_screen()
         inventory(current_user)
     elif choice == "5":
-        print("Log out")
         sys.exit("Thank you for playing!")
     else:
         print("Invalid input. Please try again.")
+        input("Press Enter to return to the town...")
         town(current_user)
 
 def shop(current_user: dict):
-    print("""
+    print(f"""
           -+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-          Welcome to the shop! 
+          Welcome to the shop! You currently have {current_user.gold} gold.
           
           You can:
           1. Buy weapons
@@ -53,11 +58,12 @@ def shop(current_user: dict):
     elif choice == "2":
         print("Sell weapons")
     elif choice == "3":
-        print(inventory(current_user))
+        inventory(current_user)
     elif choice == "4":
-        print("Exit")
+        return town(current_user)
     else:
         print("Invalid input. Please try again.")
+        input("Press Enter to return to the shop...")
         return shop(current_user)
 
 def scout(current_user: dict):
@@ -73,9 +79,11 @@ def scout(current_user: dict):
         print("You see the evil wizard in the distance.")
     else:
         sys.exit("ERROR: Invalid progress")
+    input("Press Enter to return to Pythonland...")
 
-def inventory(current_user: dict):
-    inventory_list = current_user.inventory
-    # print the inventory array in a readable format
-    for item in inventory_list:
-        print("- Name: " + item.name + ", Damage: " + str(item.damage) + ", Value: " + str(item.value))
+def inventory(current_user):
+    # iterate over inventory and print each item in an unordered list
+    for item in current_user.inventory:
+        print(f"- {item['name']}")
+        input("Press Enter to return to Pythonland...")
+

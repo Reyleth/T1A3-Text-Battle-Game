@@ -3,10 +3,12 @@ from locations import town
 from log_in import start
 from initiate import initiate
 from save_data import save_data
+from utilities import clear_screen
 
 end_program = False
 
 def run():
+    clear_screen()
     # Start the program and prompt user to log in or create a new user
     with open("src/sys_data/title.txt", "r", encoding="utf-8") as file:
         title = file.read()

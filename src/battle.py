@@ -1,15 +1,17 @@
 from character import goblin
+from utilities import clear_screen
 
 def battle(current_user: classmethod):
     hero = current_user
     enemy = goblin
 
+    print(f"{hero.name} health: {hero.health}")
+    print(f"{enemy.name} health: {enemy.health}")
     while hero.health > 0 and enemy.health > 0:
-        print(f"{hero.name} health: {hero.health}")
-        print(f"{enemy.name} health: {enemy.health}")
         print("1. Attack")
         print("2. Run")
         choice = input("Enter a number to select an option: ")
+        clear_screen()
         if choice == "1":
             hero.attack(enemy)
             enemy.attack(hero)
