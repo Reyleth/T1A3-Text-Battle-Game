@@ -1,3 +1,4 @@
+import random
 import weapons
 from health_bar import HealthBar
 
@@ -10,10 +11,17 @@ class Character:
         self.weapon = weapons.rusty_sword
 
     def attack(self, target) -> None:
-        target.health -= self.weapon.damage
+        damage = self.weapon.damage
+
+        # 20% chance for a critical hit
+        if random.random() < 0.2:
+            damage *= 2  # double the damage
+            print("Critical hit!")
+
+        target.health -= damage
         target.health = max(target.health, 0)
         target.health_bar.update()
-        print(f"{self.name} dealt {self.weapon.damage} damage to {target.name} with {self.weapon.name}")
+        print(f"{self.name} dealt {damage} damage to {target.name} with {self.weapon.name}")
 
 class Hero(Character):
     def __init__(self, name: str, health: int, max_health=100):
