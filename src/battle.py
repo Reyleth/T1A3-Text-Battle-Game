@@ -1,9 +1,7 @@
-from character import Hero, goblin
-import weapons
+from character import goblin
 
-def battle(current_user: dict, current_weapon: str="Rusty Sword"):
-    hero = Hero(current_user["username"], 100)
-    hero.equip(current_weapon)
+def battle(current_user: classmethod):
+    hero = current_user
     enemy = goblin
 
     while hero.health > 0 and enemy.health > 0:

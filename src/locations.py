@@ -1,6 +1,5 @@
 import sys
 from battle import battle
-from weapons import rusty_sword
 
 def town(current_user: dict):
     print("""
@@ -22,8 +21,8 @@ def town(current_user: dict):
     elif choice == "2":
         scout(current_user)
     elif choice == "3":
-        if battle(current_user, current_weapon=rusty_sword):
-            current_user["progress"] += 1
+        if battle(current_user):
+            current_user.progress += 1
             town(current_user)
     elif choice == "4":
         inventory(current_user)
@@ -60,21 +59,21 @@ def shop(current_user: dict):
         return shop(current_user)
 
 def scout(current_user: dict):
-    if current_user["progress"] == 1:
+    if current_user.progress == 1:
         print("You see a Goblin in the distance.")
-    elif current_user["progress"] == 2:
+    elif current_user.progress == 2:
         print("You see a flying bat in the distance.")
-    elif current_user["progress"] == 3:
+    elif current_user.progress == 3:
         print("You see a giant spider in the distance.")
-    elif current_user["progress"] == 4:
+    elif current_user.progress == 4:
         print("You see a dragon in the distance.")
-    elif current_user["progress"] == 5:
+    elif current_user.progress == 5:
         print("You see the evil wizard in the distance.")
     else:
         sys.exit("ERROR: Invalid progress")
 
 def inventory(current_user: dict):
-    inventory_list = current_user["inventory"]
+    inventory_list = current_user.inventory
     # print the inventory array in a readable format
     for item in inventory_list:
-        print("- " + item)
+        print("- Name: " + item['name'] + ", Damage: " + str(item['damage']) + ", Value: " + str(item['value']))

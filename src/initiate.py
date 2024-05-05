@@ -1,8 +1,8 @@
 import json
-from weapons import rusty_sword, Weapon
+from weapons import rusty_sword
 # This file contains the initiate function which is called when the game starts. It prints a welcome message to the user.
 
-def initiate(current_user: dict):
+def initiate(current_user: classmethod):
     print("""
           -+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
           Welcome to the world of Terminal Battle!  
@@ -12,18 +12,19 @@ def initiate(current_user: dict):
           wizard and save the town of Pythonland from his tyranny.
           You pick up your rusty sword and head towards the town square.
           
-          Good luck, Hero """ + current_user["username"] + "!" + """
+          Good luck, Hero """ + current_user.name + "!" + """
           -+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
           """)
     input("Press Enter to continue...")
-    current_user["progress"] = 1
+    current_user.progress = 1
+    current_user.equip(rusty_sword)
     # read the users.json file
     with open("src/user_data/users.json", "r", encoding="utf-8") as file:
         users = json.load(file)
 
-    # update the progress of the current user
+    # update the progress of the current user and add the rusty sword to their inventory
     for user in users:
-        if user["username"] == current_user["username"]:
+        if user["username"] == current_user.name:
             user["progress"] = 1
             user["inventory"].append(rusty_sword.to_dict())
             break

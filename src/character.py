@@ -24,9 +24,11 @@ class Character:
         print(f"{self.name} dealt {damage} damage to {target.name} with {self.weapon.name}")
 
 class Hero(Character):
-    def __init__(self, name: str, health: int, max_health=100):
+    def __init__(self, name: str, progress: int, gold: int, inventory: list, health: int=100, max_health=100):
         super().__init__(name, health, max_health)
-        self.inventory = []
+        self.progress = progress
+        self.gold = gold
+        self.inventory = inventory
         self.default_weapon = self.weapon
         self.health_bar = HealthBar(self, colour="green")
 

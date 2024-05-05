@@ -4,7 +4,6 @@ import os
 
 # Prompt user to log in or create a new user
 def start():
-    current_user = {}
     print("Welcome to the Terminal Battle Game!")
     print("Do you have an existing character?")
     print("1. Yes")
@@ -52,7 +51,7 @@ def create_user() -> dict:
         return create_user()
     else:
         # Append new user and write back to file
-        users.append({"username": username, "progress": 0, "inventory": []})
+        users.append({"username": username, "progress": 0, "gold": 0, "inventory": []})
         with open(user_data, "w", encoding="utf-8") as file:
             json.dump(users, file, indent=4)
         current_user = next(user for user in users if user["username"] == username)

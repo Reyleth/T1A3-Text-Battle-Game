@@ -1,3 +1,4 @@
+from character import Hero
 from locations import town
 from log_in import start
 from initiate import initiate
@@ -10,11 +11,13 @@ def run():
         title = file.read()
         print(title)
     current_user = start()
-    while current_user["progress"] <= 5 and end_program is False:
-        if current_user["progress"] == 0:
+    # convert current_user to Hero object
+    current_user = Hero(current_user["username"], current_user["progress"], current_user["gold"], current_user["inventory"])
+    while current_user.progress <= 5 and end_program is False:
+        if current_user.progress == 0:
             initiate(current_user)
         # Once progress is == 1, bring player to town square
-        if current_user["progress"] <= 5:
+        if current_user.progress <= 5:
             town(current_user)
         else:
             print("Game Over")
