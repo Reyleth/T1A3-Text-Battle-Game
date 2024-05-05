@@ -1,4 +1,3 @@
-import json
 from locations import clear_screen
 from save_data import save_data
 from weapons import rusty_sword

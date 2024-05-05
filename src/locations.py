@@ -67,20 +67,22 @@ def shop(current_user: dict):
         return shop(current_user)
 
 def scout(current_user: dict):
-    if current_user.progress == 1:
-        print("You see a Goblin in the distance.")
-    elif current_user.progress == 2:
-        print("You see a flying bat in the distance.")
-    elif current_user.progress == 3:
-        print("You see a giant spider in the distance.")
-    elif current_user.progress == 4:
-        print("You see a dragon in the distance.")
-    elif current_user.progress == 5:
-        print("You see the evil wizard in the distance.")
+    progress_messages = {
+        1: "You see a Goblin in the distance.",
+        2: "You see a flying bat in the distance.",
+        3: "You see a giant spider in the distance.",
+        4: "You see a dragon in the distance.",
+        5: "You see the evil wizard in the distance."
+    }
+
+    message = progress_messages.get(current_user.progress)
+    if message:
+        print(message)
     else:
         sys.exit("ERROR: Invalid progress")
-    input("Press Enter to return to Pythonland...")
 
+    input("Press Enter to return to Pythonland...")
+    
 def inventory(current_user):
     # iterate over inventory and print each item in an unordered list
     for item in current_user.inventory:
