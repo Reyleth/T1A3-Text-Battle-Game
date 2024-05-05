@@ -20,3 +20,10 @@ def battle(current_user: dict):
         else:
             print("Invalid input. Please try again.")
             continue
+    if hero.health <= 0:
+        print("You died! Ressurect in PythonLand and try again!")
+        return False
+    elif enemy.health <= 0:
+        print(f"You defeated the {enemy.name}!")
+        #loot the enemy
+        return True

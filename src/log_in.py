@@ -75,7 +75,7 @@ def log_in() -> dict:
     if any(user["username"] == username for user in users):
         current_user = next(user for user in users if user["username"] == username)
         print("Welcome back, Hero " + username + "!")
-        return current_user        
+        return current_user       
     else:
         print("\nHero not found. Please try again.\n")
         return start()

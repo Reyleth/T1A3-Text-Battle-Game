@@ -1,4 +1,5 @@
 import sys
+from battle import battle
 
 def town(current_user: dict):
     print("""
@@ -20,7 +21,9 @@ def town(current_user: dict):
     elif choice == "2":
         print("Scout")
     elif choice == "3":
-        print("Battle")
+        if battle(current_user):
+            current_user["progress"] += 1
+            town(current_user)
     elif choice == "4":
         print(inventory(current_user))
     elif choice == "5":
