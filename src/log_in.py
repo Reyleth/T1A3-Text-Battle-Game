@@ -46,7 +46,7 @@ def create_user() -> dict:
         users = []
 
     # Check if username already exists
-    if any(user["username"] == username for user in users):
+    if any(user.get("username") == username for user in users if isinstance(user, dict)):
         print("Hero name already exists. Please choose a different name.")
         return create_user()
     else:
@@ -54,7 +54,7 @@ def create_user() -> dict:
         users.append({"username": username, "progress": 0, "gold": 0, "inventory": []})
         with open(user_data, "w", encoding="utf-8") as file:
             json.dump(users, file, indent=4)
-        current_user = next(user for user in users if user["username"] == username)
+        current_user = next((user for user in users if isinstance(user, dict) and "username" in user and user["username"] == username), None)
         return current_user
 
 

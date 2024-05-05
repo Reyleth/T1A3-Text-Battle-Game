@@ -1,5 +1,6 @@
 import sys
 from battle import battle
+from save_data import save_data
 
 def town(current_user: dict):
     print("""
@@ -23,6 +24,7 @@ def town(current_user: dict):
     elif choice == "3":
         if battle(current_user):
             current_user.progress += 1
+            save_data(current_user)
             town(current_user)
     elif choice == "4":
         inventory(current_user)
@@ -76,4 +78,4 @@ def inventory(current_user: dict):
     inventory_list = current_user.inventory
     # print the inventory array in a readable format
     for item in inventory_list:
-        print("- Name: " + item['name'] + ", Damage: " + str(item['damage']) + ", Value: " + str(item['value']))
+        print("- Name: " + item.name + ", Damage: " + str(item.damage) + ", Value: " + str(item.value))

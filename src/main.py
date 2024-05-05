@@ -2,6 +2,7 @@ from character import Hero
 from locations import town
 from log_in import start
 from initiate import initiate
+from save_data import save_data
 
 end_program = False
 
@@ -13,6 +14,7 @@ def run():
     current_user = start()
     # convert current_user to Hero object
     current_user = Hero(current_user["username"], current_user["progress"], current_user["gold"], current_user["inventory"])
+    save_data(current_user)
     while current_user.progress <= 5 and end_program is False:
         if current_user.progress == 0:
             initiate(current_user)

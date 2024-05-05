@@ -40,8 +40,15 @@ class Hero(Character):
         print(f"{self.name} dropped {self.weapon.name}!")
         self.weapon = self.default_weapon
 
-    def swap_weapon(self) -> None:
-        print(f"{self.name} swapped the {self.weapon.name}")
+    def to_dict(self):
+        return {
+            "name": self.name,
+            "progress": self.progress,
+            "gold": self.gold,
+            "inventory": [item.to_dict() if isinstance(item, weapons.Weapon) else item for item in self.inventory],
+            "health": self.health,
+            "max_health": self.health_max
+        }
 
 class Enemy(Character):
     def __init__(self, name: str, health: int, weapon: str,) -> None:
