@@ -10,11 +10,11 @@ def run():
         title = file.read()
         print(title)
     current_user = start()
-    while current_user["progress"] < 5 and end_program is False:
+    while current_user["progress"] <= 5 and end_program is False:
         if current_user["progress"] == 0:
             initiate(current_user)
         # Once progress is == 1, bring player to town square
-        if current_user["progress"] == 1:
+        if current_user["progress"] <= 5:
             town(current_user)
         else:
             print("Game Over")

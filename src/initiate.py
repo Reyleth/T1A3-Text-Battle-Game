@@ -17,7 +17,6 @@ def initiate(current_user: dict):
           """)
     input("Press Enter to continue...")
     current_user["progress"] = 1
-    inventory = [rusty_sword]
     # read the users.json file
     with open("src/user_data/users.json", "r", encoding="utf-8") as file:
         users = json.load(file)

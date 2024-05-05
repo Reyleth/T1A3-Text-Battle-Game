@@ -26,7 +26,7 @@ def town(current_user: dict):
             current_user["progress"] += 1
             town(current_user)
     elif choice == "4":
-        print(inventory(current_user))
+        inventory(current_user)
     elif choice == "5":
         print("Log out")
         sys.exit("Thank you for playing!")
@@ -74,4 +74,7 @@ def scout(current_user: dict):
         sys.exit("ERROR: Invalid progress")
 
 def inventory(current_user: dict):
-    return current_user["inventory"]
+    inventory_list = current_user["inventory"]
+    # print the inventory array in a readable format
+    for item in inventory_list:
+        print("- " + item)

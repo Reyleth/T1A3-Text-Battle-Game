@@ -39,3 +39,7 @@ class Enemy(Character):
     
         self.weapon = weapon
         self.health_bar = HealthBar(self, colour="red")
+
+goblin = Enemy(name="Goblin", 
+               health=100, 
+               weapon=weapons.rusty_sword)

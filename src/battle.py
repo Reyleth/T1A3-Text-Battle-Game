@@ -1,10 +1,10 @@
-from character import Hero, Enemy
+from character import Hero, goblin
 import weapons
 
 def battle(current_user: dict, current_weapon: str="Rusty Sword"):
     hero = Hero(current_user["username"], 100)
     hero.equip(current_weapon)
-    enemy = Enemy(name="Goblin", health=100, weapon=weapons.rusty_sword)
+    enemy = goblin
 
     while hero.health > 0 and enemy.health > 0:
         print(f"{hero.name} health: {hero.health}")
@@ -26,8 +26,9 @@ def battle(current_user: dict, current_weapon: str="Rusty Sword"):
             continue
     if hero.health <= 0:
         print("You died! Ressurect in PythonLand and try again!")
+        input("Press Enter to continue...")
         return False
-    elif enemy.health <= 0:
+    if enemy.health <= 0:
         print(f"You defeated the {enemy.name}!")
         #loot the enemy
         return True
