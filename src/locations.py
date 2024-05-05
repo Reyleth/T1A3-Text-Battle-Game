@@ -61,8 +61,5 @@ def shop(current_user: dict):
 def scout():
     pass
 
-def battle():
-    pass
-
 def inventory(current_user: dict):
     return current_user["inventory"]
