@@ -1,12 +1,14 @@
 import sys
 from battle import battle
-from character import Item
+# from character import Item
 from utilities import clear_screen, save_data
 from weapons import Weapon
 
+
 def town(current_user: dict):
     clear_screen()
-    print("""
+    print(
+        """
           -+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
           You are now in the town of Pythonland. 
           
@@ -17,11 +19,13 @@ def town(current_user: dict):
           4. View inventory
           5. Log out
           -+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-          """)
+          """
+    )
     choice = input("Enter a number to select an option: ")
     if choice == "1":
         clear_screen()
         shop(current_user)
+        town(current_user)
     elif choice == "2":
         clear_screen()
         scout(current_user)
@@ -35,7 +39,8 @@ def town(current_user: dict):
             town(current_user)
     elif choice == "4":
         clear_screen()
-        inventory(current_user)
+        view_inventory(current_user)
+        input("Press Enter to return to Pythonland...")
     elif choice == "5":
         sys.exit("Thank you for playing!")
     else:
@@ -43,25 +48,43 @@ def town(current_user: dict):
         input("Press Enter to return to the town...")
         town(current_user)
 
+
 def shop(current_user: dict):
-    print(f"""
+    print(
+        f"""
           -+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
           Welcome to the shop! You currently have {current_user.gold} gold.
           
           You can:
           1. Buy weapons
-          2. Sell weapons
+          2. Sell items
           3. View Inventory
           4. Exit
           -+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-          """)
+          """
+    )
     choice = input("Enter a number to select an option: ")
     if choice == "1":
         print("Buy weapons")
     elif choice == "2":
-        print("Sell weapons")
+        print("Sell items")
+        view_inventory(current_user)
+        sell_item = input("Enter the name of the item you would like to sell: ")
+        for item in current_user.inventory:
+            if item.name == sell_item:
+                current_user.gold += item.value
+                current_user.inventory.remove(item)
+                save_data(current_user)
+                print(f"{item.name} sold for {item.value} gold.")
+                break
+            else:
+                print("Item not found. Did you spell it correctly?")
+                input("Press Enter to return to the shop...")
+                return shop(current_user)
     elif choice == "3":
-        inventory(current_user)
+        view_inventory(current_user)
+        input("Press Enter to return to the shop...")
+        return shop(current_user)
     elif choice == "4":
         return town(current_user)
     else:
@@ -69,13 +92,14 @@ def shop(current_user: dict):
         input("Press Enter to return to the shop...")
         return shop(current_user)
 
+
 def scout(current_user: dict):
     progress_messages = {
         1: "You see a Goblin in the distance.",
         2: "You see a flying bat in the distance.",
         3: "You see a giant spider in the distance.",
         4: "You see a dragon in the distance.",
-        5: "You see the evil wizard in the distance."
+        5: "You see the evil wizard in the distance.",
     }
 
     message = progress_messages.get(current_user.progress)
@@ -86,20 +110,23 @@ def scout(current_user: dict):
 
     input("Press Enter to return to Pythonland...")
 
-def inventory(current_user):
+
+def view_inventory(current_user):
     # iterate over inventory and print each weapon in an unordered list followed by each item
-    print("""
-          -+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-          Inventory:
-          """)
-    for i in current_user.inventory:
-        if isinstance(i, Weapon):
-            print(f"{i.name} - Attack: {i.damage}")
-        elif isinstance(i, Item):
-            print(f"{i.name} - Value: {i.value}")
-        else:
-            print("ERROR: Invalid item type")
-    print("""
-            -+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-            """)
-    input("Press Enter to return to Pythonland...")
+    print(
+        """
+      -+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+      Inventory:
+      """
+        + "\n".join(
+            (
+                f"{i.name} - Damage: {i.damage} - Value: {i.value}"
+                if isinstance(i, Weapon)
+                else f"{i.name} - Value: {i.value}"
+            )
+            for i in current_user.inventory
+        )
+        + """
+      -+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+      """
+    )

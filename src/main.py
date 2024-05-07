@@ -6,6 +6,7 @@ from utilities import clear_screen, save_data, dict_to_class
 
 end_program = False
 
+
 def run():
     clear_screen()
     # Start the program and prompt user to log in or create a new user
@@ -14,7 +15,12 @@ def run():
         print(title)
     current_user = start()
     # convert current_user to Hero object
-    current_user = Hero(current_user["username"], current_user["progress"], current_user["gold"], [dict_to_class(item) for item in current_user["inventory"]])
+    current_user = Hero(
+        current_user["username"],
+        current_user["progress"],
+        current_user["gold"],
+        [dict_to_class(item) for item in current_user["inventory"]],
+    )
     save_data(current_user)
     while current_user.progress <= 5 and end_program is False:
         if current_user.progress == 0:
@@ -28,11 +34,5 @@ def run():
     print("Thank you for playing!")
 
 
-
-
-
-
-
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     run()
