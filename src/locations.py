@@ -72,7 +72,7 @@ def shop(current_user: dict):
         with open("src/sys_data/shop_weapons.json", "r", encoding="utf-8") as file:
             # load all weapons that match current_user progress
             for weapon in json.load(file):
-                if weapon["progress"] == current_user.progress:
+                if weapon["progress"] <= current_user.progress:
                      # Exclude 'type' and 'progress' from the dictionary
                     weapon_args = {k: v for k, v in weapon.items() if k not in ["type", "progress"]}
                     shop_weapons.append(Weapon(**weapon_args))

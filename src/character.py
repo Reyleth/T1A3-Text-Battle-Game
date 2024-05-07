@@ -106,12 +106,16 @@ dragon_scale = Item("dragon scale", 1)
 wizard_hat = Item("wizard hat", 1)
 
 goblin = Enemy(
-    name="Goblin", health=100, weapon=weapons.rusty_sword, gold=10, inventory=[old_sock]
+    name="Goblin", 
+    health=100, 
+    weapon=weapons.rusty_sword, 
+    gold=10, 
+    inventory=[old_sock]
 )
 
 flying_bat = Enemy(
     name="Flying Bat",
-    health=150,
+    health=100,
     weapon=weapons.sharp_fang,
     gold=20,
     inventory=[bat_wing],
@@ -119,7 +123,7 @@ flying_bat = Enemy(
 
 giant_spider = Enemy(
     name="Giant Spider",
-    health=200,
+    health=100,
     weapon=weapons.poisonous_fang,
     gold=30,
     inventory=[spider_silk],
@@ -127,7 +131,7 @@ giant_spider = Enemy(
 
 dragon = Enemy(
     name="Dragon",
-    health=250,
+    health=100,
     weapon=weapons.fire_breath,
     gold=40,
     inventory=[dragon_scale],
@@ -135,7 +139,7 @@ dragon = Enemy(
 
 evil_wizard = Enemy(
     name="Evil Wizard",
-    health=300,
+    health=100,
     weapon=weapons.magic_staff,
     gold=50,
     inventory=[wizard_hat],
