@@ -1,3 +1,4 @@
+import json
 import sys
 from battle import battle
 # from character import Item
@@ -66,6 +67,33 @@ def shop(current_user: dict):
     choice = input("Enter a number to select an option: ")
     if choice == "1":
         print("Buy weapons")
+        shop_weapons = []
+        # read shop weapons from JSON file
+        with open("src/sys_data/shop_weapons.json", "r", encoding="utf-8") as file:
+            # load all weapons that match current_user progress
+            for weapon in json.load(file):
+                if weapon["progress"] == current_user.progress:
+                     # Exclude 'type' and 'progress' from the dictionary
+                    weapon_args = {k: v for k, v in weapon.items() if k not in ["type", "progress"]}
+                    shop_weapons.append(Weapon(**weapon_args))
+                    print(f"{weapon['name']} - Damage: {weapon['damage']} - Value: {weapon['value']}")
+        buy_weapon = input("Enter the name of the weapon you would like to buy: ")
+        for weapon in shop_weapons:
+            if weapon.name == buy_weapon:
+                if current_user.gold >= weapon.value:
+                    current_user.inventory.append(weapon)
+                    current_user.gold -= weapon.value
+                    save_data(current_user)
+                    print(f"{weapon.name} purchased for {weapon.value} gold.")
+                    break
+                else:
+                    print("You do not have enough gold to purchase this item.")
+                    input("Press Enter to return to the shop...")
+                    return shop(current_user)
+            else:
+                print("Item not found. Did you spell it correctly?")
+                input("Press Enter to return to the shop...")
+                return shop(current_user)
     elif choice == "2":
         print("Sell items")
         view_inventory(current_user)
