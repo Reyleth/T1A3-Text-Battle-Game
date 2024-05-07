@@ -1,5 +1,5 @@
 from locations import clear_screen
-from save_data import save_data
+from utilities import save_data
 from weapons import rusty_sword
 # This file contains the initiate function which is called when the game starts. It prints a welcome message to the user.
 

@@ -9,7 +9,8 @@ class Weapon:
             "name": self.name,
             "weapon_type": self.weapon_type,
             "damage": self.damage,
-            "value": self.value
+            "value": self.value,
+            "type": "Weapon"
         }
 # Hero weapons
 rusty_sword = Weapon(name="Rusty Sword",

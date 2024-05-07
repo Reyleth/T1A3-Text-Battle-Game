@@ -1,7 +1,8 @@
 import sys
 from battle import battle
-from save_data import save_data
-from utilities import clear_screen
+from character import Item
+from utilities import clear_screen, save_data
+from weapons import Weapon
 
 def town(current_user: dict):
     clear_screen()
@@ -29,6 +30,8 @@ def town(current_user: dict):
         if battle(current_user):
             current_user.progress += 1
             save_data(current_user)
+            town(current_user)
+        else:
             town(current_user)
     elif choice == "4":
         clear_screen()
@@ -82,10 +85,21 @@ def scout(current_user: dict):
         sys.exit("ERROR: Invalid progress")
 
     input("Press Enter to return to Pythonland...")
-    
-def inventory(current_user):
-    # iterate over inventory and print each item in an unordered list
-    for item in current_user.inventory:
-        print(f"- {item['name']}")
-        input("Press Enter to return to Pythonland...")
 
+def inventory(current_user):
+    # iterate over inventory and print each weapon in an unordered list followed by each item
+    print("""
+          -+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+          Inventory:
+          """)
+    for i in current_user.inventory:
+        if isinstance(i, Weapon):
+            print(f"{i.name} - Attack: {i.damage}")
+        elif isinstance(i, Item):
+            print(f"{i.name} - Value: {i.value}")
+        else:
+            print("ERROR: Invalid item type")
+    print("""
+            -+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+            """)
+    input("Press Enter to return to Pythonland...")

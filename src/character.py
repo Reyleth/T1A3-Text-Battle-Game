@@ -2,6 +2,7 @@ import random
 import weapons
 from health_bar import HealthBar
 
+
 class Character:
     def __init__(self, name: str, health: int, max_health=100):
         self.name = name
@@ -21,10 +22,21 @@ class Character:
         target.health -= damage
         target.health = max(target.health, 0)
         target.health_bar.update()
-        print(f"{self.name} dealt {damage} damage to {target.name} with {self.weapon.name}")
+        print(
+            f"{self.name} dealt {damage} damage to {target.name} with {self.weapon.name}"
+        )
+
 
 class Hero(Character):
-    def __init__(self, name: str, progress: int, gold: int, inventory: list, health: int=100, max_health=100):
+    def __init__(
+        self,
+        name: str,
+        progress: int,
+        gold: int,
+        inventory: list,
+        health: int = 100,
+        max_health=100,
+    ):
         super().__init__(name, health, max_health)
         self.progress = progress
         self.gold = gold
@@ -46,19 +58,30 @@ class Hero(Character):
         for item in enemy.inventory:
             self.inventory.append(item)
             print(f"{self.name} looted {item.name} from the {enemy.name}!")
+        input("Press Enter to continue...")
 
     def to_dict(self):
         return {
             "name": self.name,
             "progress": self.progress,
             "gold": self.gold,
-            "inventory": [item.to_dict() if isinstance(item, weapons.Weapon) else item for item in self.inventory],
+            "inventory": [
+                (
+                    item.to_dict()
+                    if isinstance(item, weapons.Weapon) or isinstance(item, Item)
+                    else item
+                )
+                for item in self.inventory
+            ],
             "health": self.health,
-            "max_health": self.health_max
+            "max_health": self.health_max,
         }
 
+
 class Enemy(Character):
-    def __init__(self, name: str, health: int, weapon: str, gold: int, inventory: list) -> None:
+    def __init__(
+        self, name: str, health: int, weapon: str, gold: int, inventory: list
+    ) -> None:
         super().__init__(name, health)
 
         self.weapon = weapon
@@ -66,10 +89,15 @@ class Enemy(Character):
         self.inventory = inventory
         self.health_bar = HealthBar(self, colour="red")
 
+
 class Item:
     def __init__(self, name, value):
         self.name = name
         self.value = value
+
+    def to_dict(self):
+        return {"name": self.name, "value": self.value, "type": "Item"}
+
 
 old_sock = Item("old sock", 1)
 bat_wing = Item("bat wing", 1)
@@ -77,32 +105,38 @@ spider_silk = Item("spider silk", 1)
 dragon_scale = Item("dragon scale", 1)
 wizard_hat = Item("wizard hat", 1)
 
-goblin = Enemy(name="Goblin", 
-                health=100, 
-                weapon=weapons.rusty_sword,
-                gold=10,
-                inventory=[old_sock])
+goblin = Enemy(
+    name="Goblin", health=100, weapon=weapons.rusty_sword, gold=10, inventory=[old_sock]
+)
 
-flying_bat = Enemy(name="Flying Bat",
-                    health=150,
-                    weapon=weapons.sharp_fang,
-                    gold=20,
-                    inventory=[bat_wing])
+flying_bat = Enemy(
+    name="Flying Bat",
+    health=150,
+    weapon=weapons.sharp_fang,
+    gold=20,
+    inventory=[bat_wing],
+)
 
-giant_spider = Enemy(name="Giant Spider",
-                    health=200,
-                    weapon=weapons.poisonous_fang,
-                    gold=30,
-                    inventory=[spider_silk])
+giant_spider = Enemy(
+    name="Giant Spider",
+    health=200,
+    weapon=weapons.poisonous_fang,
+    gold=30,
+    inventory=[spider_silk],
+)
 
-dragon = Enemy(name="Dragon",
-                health=250,
-                weapon=weapons.fire_breath,
-                gold=40,
-                inventory=[dragon_scale])
+dragon = Enemy(
+    name="Dragon",
+    health=250,
+    weapon=weapons.fire_breath,
+    gold=40,
+    inventory=[dragon_scale],
+)
 
-evil_wizard = Enemy(name="Evil Wizard",
-                    health=300,
-                    weapon=weapons.magic_staff,
-                    gold=50,
-                    inventory=[wizard_hat])
+evil_wizard = Enemy(
+    name="Evil Wizard",
+    health=300,
+    weapon=weapons.magic_staff,
+    gold=50,
+    inventory=[wizard_hat],
+)
