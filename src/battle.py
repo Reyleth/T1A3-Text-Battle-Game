@@ -1,9 +1,18 @@
-from character import goblin
+import character
 from utilities import clear_screen
+
+enemy_list = [
+    character.goblin,
+    character.flying_bat,
+    character.giant_spider,
+    character.dragon,
+    character.evil_wizard
+]
 
 def battle(current_user: classmethod):
     hero = current_user
-    enemy = goblin
+    # match hero to enemy based on progress
+    enemy = enemy_list[hero.progress - 1]
 
     print(f"{hero.name} health: {hero.health}")
     print(f"{enemy.name} health: {enemy.health}")
@@ -31,4 +40,5 @@ def battle(current_user: classmethod):
     if enemy.health <= 0:
         print(f"You defeated the {enemy.name}!")
         #loot the enemy
+        hero.loot(enemy)
         return True
