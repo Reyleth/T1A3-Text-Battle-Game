@@ -8,28 +8,28 @@ def start():
     print("Do you have an existing character?")
     print("1. Yes")
     print("2. No")
-    choice = input("Enter your choice: ")
-    if (
-        choice == "1"
-        or choice == "yes"
-        or choice == "Yes"
-        or choice == "YES"
-        or choice == "y"
-        or choice == "Y"
-    ):
-        return log_in()
-    elif (
-        choice == "2"
-        or choice == "no"
-        or choice == "No"
-        or choice == "NO"
-        or choice == "n"
-        or choice == "N"
-    ):
-        return create_user()
-    else:
-        print("Invalid input, please try again.")
-        start()
+    while True:
+        choice = input("Enter your choice: ")
+        if (
+            choice == "1"
+            or choice == "yes"
+            or choice == "Yes"
+            or choice == "YES"
+            or choice == "y"
+            or choice == "Y"
+        ):
+            return log_in()
+        elif (
+            choice == "2"
+            or choice == "no"
+            or choice == "No"
+            or choice == "NO"
+            or choice == "n"
+            or choice == "N"
+        ):
+            return create_user()
+        else:
+            print("Invalid input, please try again.")
 
 
 # Create a new user and export to a JSON file
@@ -46,7 +46,9 @@ def create_user() -> dict:
         users = []
 
     # Check if username already exists
-    if any(user.get("username") == username for user in users if isinstance(user, dict)):
+    if any(
+        user.get("username") == username for user in users if isinstance(user, dict)
+    ):
         print("Hero name already exists. Please choose a different name.")
         return create_user()
     else:
@@ -54,7 +56,16 @@ def create_user() -> dict:
         users.append({"username": username, "progress": 0, "gold": 0, "inventory": []})
         with open(user_data, "w", encoding="utf-8") as file:
             json.dump(users, file, indent=4)
-        current_user = next((user for user in users if isinstance(user, dict) and "username" in user and user["username"] == username), None)
+        current_user = next(
+            (
+                user
+                for user in users
+                if isinstance(user, dict)
+                and "username" in user
+                and user["username"] == username
+            ),
+            None,
+        )
         return current_user
 
 
@@ -74,7 +85,7 @@ def log_in() -> dict:
     if any(user["username"] == username for user in users):
         current_user = next(user for user in users if user["username"] == username)
         print("Welcome back, Hero " + username + "!")
-        return current_user       
+        return current_user
     else:
         print("\nHero not found. Please try again.\n")
         return start()

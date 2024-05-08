@@ -44,13 +44,23 @@ class Hero(Character):
         self.default_weapon = self.weapon
         self.health_bar = HealthBar(self, colour="green")
 
-    def equip(self, weapon) -> None:
-        self.weapon = weapon
-        print(f"{self.name} equipped a(n) {self.weapon.name}!")
-
-    def drop(self) -> None:
-        print(f"{self.name} dropped {self.weapon.name}!")
-        self.weapon = self.default_weapon
+    def change_weapon(self) -> None:
+        print("Change Weapon")
+        for index, weapon in enumerate(self.inventory):
+            print(f"{index + 1}. {weapon.name}")
+        print(f"{len(self.inventory) + 1}. Return to main menu")
+        choice = input("Enter a number to select an option: ")
+        if choice == str(len(self.inventory) + 1):
+            return
+        try:
+            choice = int(choice)
+            if 0 < choice <= len(self.inventory):
+                self.weapon = self.inventory[choice - 1]
+                print(f"{self.name} equipped a(n) {self.weapon.name}!")
+            else:
+                print("Invalid input. Please try again.")
+        except ValueError:
+            print("Invalid input. Please try again.")
 
     def loot(self, enemy) -> None:
         self.gold += enemy.gold
@@ -106,11 +116,7 @@ dragon_scale = Item("dragon scale", 1)
 wizard_hat = Item("wizard hat", 1)
 
 goblin = Enemy(
-    name="Goblin", 
-    health=100, 
-    weapon=weapons.rusty_sword, 
-    gold=10, 
-    inventory=[old_sock]
+    name="Goblin", health=100, weapon=weapons.rusty_sword, gold=10, inventory=[old_sock]
 )
 
 flying_bat = Enemy(

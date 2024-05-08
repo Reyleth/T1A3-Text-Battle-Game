@@ -48,4 +48,3 @@ magic_staff = Weapon(name="Magic Staff",
                         weapon_type="magic",
                         damage=7,
                         value=0)
-

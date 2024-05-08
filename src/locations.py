@@ -1,6 +1,7 @@
 import json
 import sys
 from battle import battle
+
 # from character import Item
 from utilities import clear_screen, save_data
 from weapons import Weapon
@@ -73,10 +74,14 @@ def shop(current_user: dict):
             # load all weapons that match current_user progress
             for weapon in json.load(file):
                 if weapon["progress"] <= current_user.progress:
-                     # Exclude 'type' and 'progress' from the dictionary
-                    weapon_args = {k: v for k, v in weapon.items() if k not in ["type", "progress"]}
+                    # Exclude 'type' and 'progress' from the dictionary
+                    weapon_args = {
+                        k: v for k, v in weapon.items() if k not in ["type", "progress"]
+                    }
                     shop_weapons.append(Weapon(**weapon_args))
-                    print(f"{weapon['name']} - Damage: {weapon['damage']} - Value: {weapon['value']}")
+                    print(
+                        f"{weapon['name']} - Damage: {weapon['damage']} - Value: {weapon['value']}"
+                    )
         buy_weapon = input("Enter the name of the weapon you would like to buy: ")
         for weapon in shop_weapons:
             if weapon.name == buy_weapon:

@@ -4,9 +4,6 @@ from log_in import start
 from initiate import initiate
 from utilities import clear_screen, save_data, dict_to_class
 
-end_program = False
-
-
 def run():
     clear_screen()
     # Start the program and prompt user to log in or create a new user
@@ -22,12 +19,16 @@ def run():
         [dict_to_class(item) for item in current_user["inventory"]],
     )
     save_data(current_user)
-    while current_user.progress <= 5 and end_program is False:
+    while current_user.progress <= 6:
         if current_user.progress == 0:
             initiate(current_user)
         # Once progress is == 1, bring player to town square
-        if current_user.progress <= 5:
+        elif current_user.progress <= 5:
             town(current_user)
+        elif current_user.progress == 6:
+            print("You have completed the game!")
+            # Add ending code here
+            break
         else:
             print("Game Over")
             break
