@@ -3,13 +3,12 @@ from locations import town
 from log_in import start
 from initiate import initiate
 from utilities import clear_screen, save_data, dict_to_class
+from art import tprint
 
 def run():
     clear_screen()
-    # Start the program and prompt user to log in or create a new user
-    with open("src/sys_data/title.txt", "r", encoding="utf-8") as file:
-        title = file.read()
-        print(title)
+    # Print Title
+    tprint("Terminal Battle")
     current_user = start()
     # convert current_user to Hero object
     current_user = Hero(
