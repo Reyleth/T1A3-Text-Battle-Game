@@ -35,6 +35,10 @@ def town(current_user: dict):
         if battle(current_user):
             current_user.progress += 1
             save_data(current_user)
+            if current_user.progress == 6:
+                print("You have completed the game!")
+                print("Thank you for playing!")
+                sys.exit()
             town(current_user)
         else:
             town(current_user)
@@ -90,31 +94,30 @@ def shop(current_user: dict):
                     current_user.gold -= weapon.value
                     save_data(current_user)
                     print(f"{weapon.name} purchased for {weapon.value} gold.")
-                    break
+                    input("Press Enter to return to the shop...")
+                    return shop(current_user)
                 else:
                     print("You do not have enough gold to purchase this item.")
                     input("Press Enter to return to the shop...")
                     return shop(current_user)
-            else:
-                print("Item not found. Did you spell it correctly?")
-                input("Press Enter to return to the shop...")
-                return shop(current_user)
+        print("Item not found. Did you spell it correctly?")
+        input("Press Enter to return to the shop...")
+        return shop(current_user)
     elif choice == "2":
         print("Sell items")
         view_inventory(current_user)
         sell_item = input("Enter the name of the item you would like to sell: ")
         for item in current_user.inventory:
             if item.name.strip().lower() == sell_item.strip().lower():
-                current_user.gold += item.value
                 current_user.inventory.remove(item)
+                current_user.gold += item.value
                 save_data(current_user)
                 print(f"{item.name} sold for {item.value} gold.")
                 input("Press Enter to return to the shop...")
-                break
-            else:
-                print("Item not found. Did you spell it correctly?")
-                input("Press Enter to return to the shop...")
                 return shop(current_user)
+        print("Item not found. Did you spell it correctly?")
+        input("Press Enter to return to the shop...")
+        return shop(current_user)
     elif choice == "3":
         view_inventory(current_user)
         input("Press Enter to return to the shop...")

@@ -18,7 +18,13 @@ def run():
         [dict_to_class(item) for item in current_user["inventory"]],
     )
     save_data(current_user)
-    while current_user.progress <= 6:
+    if current_user.progress == 6:
+        clear_screen()
+        print("This character has already completed the game!")
+        print("Select a different character or create a new one.")
+        input("Press Enter to continue...")
+        return run()
+    while current_user.progress <= 5:
         if current_user.progress == 0:
             initiate(current_user)
         # Once progress is == 1, bring player to town square

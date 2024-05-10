@@ -2,4 +2,5 @@ __pycache__
 users.json
 .venv
 .DS_Store
+tests_to_run.txt
 TODO.txt
