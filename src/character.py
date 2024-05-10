@@ -119,7 +119,7 @@ dragon_scale = Item("dragon scale", 1)
 wizard_hat = Item("wizard hat", 1)
 
 goblin = Enemy(
-    name="Goblin", health=100, weapon=weapons.rusty_sword, gold=10, inventory=[old_sock]
+    name="Goblin", health=100, weapon=weapons.old_dagger, gold=10, inventory=[old_sock],
 )
 
 flying_bat = Enemy(

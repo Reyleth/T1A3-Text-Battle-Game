@@ -86,6 +86,11 @@ def shop(current_user: dict):
                     print(
                         f"{weapon['name']} - Damage: {weapon['damage']} - Value: {weapon['value']}"
                     )
+        # if no weapons are available for purchase, return to the shop
+        if not shop_weapons:
+            print("There are no weapons available for purchase at this time.")
+            input("Press Enter to return to the shop...")
+            return shop(current_user)
         buy_weapon = input("Enter the name of the weapon you would like to buy: ")
         for weapon in shop_weapons:
             if weapon.name == buy_weapon:
@@ -106,6 +111,10 @@ def shop(current_user: dict):
     elif choice == "2":
         print("Sell items")
         view_inventory(current_user)
+        if len(current_user.inventory) == 1 and isinstance(current_user.inventory[0], Weapon):
+            print("You cannot sell your only weapon.")
+            input("Press Enter to return to the shop...")
+            return shop(current_user)
         sell_item = input("Enter the name of the item you would like to sell: ")
         for item in current_user.inventory:
             if item.name.strip().lower() == sell_item.strip().lower():

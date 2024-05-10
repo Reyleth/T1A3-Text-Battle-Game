@@ -12,23 +12,28 @@ class Weapon:
             "value": self.value,
             "type": "Weapon"
         }
-# Hero weapons
+# Hero starter weapon
 rusty_sword = Weapon(name="Rusty Sword",
                         weapon_type="sharp",
                         damage=3,
                         value=5)
 
-iron_sword = Weapon(name="Iron Sword",
-                        weapon_type="sharp",
-                        damage=5,
-                        value=10)
+# iron_sword = Weapon(name="Iron Sword",
+#                         weapon_type="sharp",
+#                         damage=5,
+#                         value=10)
 
-short_bow = Weapon(name="Short Bow",
-                        weapon_type="ranged",
-                        damage=4,
-                        value=8)
+# short_bow = Weapon(name="Short Bow",
+#                         weapon_type="ranged",
+#                         damage=4,
+#                         value=8)
 
 # Enemy weapons
+old_dagger = Weapon(name="Old Dagger",
+                        weapon_type="sharp",
+                        damage=1,
+                        value=0)
+
 sharp_fang = Weapon(name="Sharp Fang",
                         weapon_type="sharp",
                         damage=4,
@@ -36,15 +41,15 @@ sharp_fang = Weapon(name="Sharp Fang",
 
 poisonous_fang = Weapon(name="Poisonous Fang",
                         weapon_type="sharp",
-                        damage=3,
+                        damage=7,
                         value=0)
 
 fire_breath = Weapon(name="Fire Breath",
                         weapon_type="fire",
-                        damage=5,
+                        damage=10,
                         value=0)
 
 magic_staff = Weapon(name="Magic Staff",
                         weapon_type="magic",
-                        damage=7,
+                        damage=13,
                         value=0)
