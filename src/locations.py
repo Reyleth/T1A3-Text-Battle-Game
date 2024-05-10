@@ -1,3 +1,4 @@
+from art import tprint
 import json
 import sys
 from battle import battle
@@ -52,6 +53,7 @@ def town(current_user: dict):
 
 
 def shop(current_user: dict):
+    tprint("Shop")
     print(
         f"""
           -+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+

@@ -1,9 +1,9 @@
+from art import tprint
 from character import Hero
 from locations import town
 from log_in import start
 from initiate import initiate
 from utilities import clear_screen, save_data, dict_to_class
-from art import tprint
 
 def run():
     clear_screen()
