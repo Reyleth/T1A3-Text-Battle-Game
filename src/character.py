@@ -44,6 +44,9 @@ class Hero(Character):
         self.default_weapon = self.weapon
         self.health_bar = HealthBar(self, colour="green")
 
+    def equip(self, weapon) -> None:
+        self.weapon = weapon
+
     def change_weapon(self) -> None:
         print("Change Weapon")
         for index, weapon in enumerate(self.inventory):

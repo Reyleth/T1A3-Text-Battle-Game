@@ -2,7 +2,7 @@
     {
         "name": "Iron Sword",
         "weapon_type": "sharp",
-        "damage": 4,
+        "damage": 10,
         "value": 8,
         "type": "Weapon",
         "progress": 1

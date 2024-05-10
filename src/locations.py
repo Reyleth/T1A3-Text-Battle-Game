@@ -2,8 +2,6 @@ from art import tprint
 import json
 import sys
 from battle import battle
-
-# from character import Item
 from utilities import clear_screen, save_data
 from weapons import Weapon
 
@@ -106,11 +104,12 @@ def shop(current_user: dict):
         view_inventory(current_user)
         sell_item = input("Enter the name of the item you would like to sell: ")
         for item in current_user.inventory:
-            if item.name == sell_item:
+            if item.name.strip().lower() == sell_item.strip().lower():
                 current_user.gold += item.value
                 current_user.inventory.remove(item)
                 save_data(current_user)
                 print(f"{item.name} sold for {item.value} gold.")
+                input("Press Enter to return to the shop...")
                 break
             else:
                 print("Item not found. Did you spell it correctly?")
