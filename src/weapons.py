@@ -18,16 +18,6 @@ rusty_sword = Weapon(name="Rusty Sword",
                         damage=3,
                         value=5)
 
-# iron_sword = Weapon(name="Iron Sword",
-#                         weapon_type="sharp",
-#                         damage=5,
-#                         value=10)
-
-# short_bow = Weapon(name="Short Bow",
-#                         weapon_type="ranged",
-#                         damage=4,
-#                         value=8)
-
 # Enemy weapons
 old_dagger = Weapon(name="Old Dagger",
                         weapon_type="sharp",

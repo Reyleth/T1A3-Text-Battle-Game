@@ -6,6 +6,7 @@ from initiate import initiate
 from utilities import clear_screen, save_data, dict_to_class
 
 def run():
+    '''Run the game'''
     clear_screen()
     # Print Title
     tprint("Terminal Battle")
@@ -38,6 +39,7 @@ def run():
             print("Game Over")
             break
     print("Thank you for playing!")
+    return
 
 
 if __name__ == "__main__":

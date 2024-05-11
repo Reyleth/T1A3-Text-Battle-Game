@@ -8,6 +8,7 @@ from weapons import Weapon
 
 def town(current_user: dict):
     clear_screen()
+    tprint("Town Square")
     print(
         """
           -+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -36,9 +37,7 @@ def town(current_user: dict):
             current_user.progress += 1
             save_data(current_user)
             if current_user.progress == 6:
-                print("You have completed the game!")
-                print("Thank you for playing!")
-                sys.exit()
+                ending(current_user)
             town(current_user)
         else:
             town(current_user)
@@ -176,3 +175,22 @@ def view_inventory(current_user):
       -+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
       """
     )
+
+def ending(current_user) -> None:
+    if current_user.progress == 6:
+        # Add ending code here TODO
+        clear_screen()
+        print(
+            f"""
+          -+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+          You have defeated the evil wizard and saved Pythonland!
+
+            Thank you for playing Terminal Battle, Hero {current_user.name}!
+          -+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+          """
+        
+        )
+        input("Thank you for playing! Press Enter to continue...")
+        sys.exit()
+    else:
+        sys.exit("ERROR: Invalid progress")

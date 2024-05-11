@@ -14,6 +14,8 @@ The github repository is located at <https://github.com/Reyleth/T1A3-Text-Battle
 
 ## Style guides
 
+This python project follows the standard PEP 8 style guide, more can be read [here](https://peps.python.org/pep-0008/)
+
 ## Features List
 
 ### User Creation/Log in

@@ -112,11 +112,11 @@ class Item:
         return {"name": self.name, "value": self.value, "type": "Item"}
 
 
-old_sock = Item("old sock", 1)
-bat_wing = Item("bat wing", 1)
-spider_silk = Item("spider silk", 1)
-dragon_scale = Item("dragon scale", 1)
-wizard_hat = Item("wizard hat", 1)
+old_sock = Item("Old Sock", 1)
+bat_wing = Item("Bat Wing", 5)
+spider_silk = Item("Spider Silk", 10)
+dragon_scale = Item("Dragon Scale", 20)
+wizard_hat = Item("Wizard Hat", 100)
 
 goblin = Enemy(
     name="Goblin", health=100, weapon=weapons.old_dagger, gold=10, inventory=[old_sock],
