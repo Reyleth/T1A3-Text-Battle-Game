@@ -10,33 +10,33 @@ Clone this repository and run `install_requirements.sh` to setup all nessessary 
 
 **For Mac Users**: A pre-compiled executable is available [here](https://github.com/Reyleth/T1A3-Text-Battle-Game/releases/tag/v0.9)
 
-### Original Idea/ Development Goal
+## Original Idea/ Development Goal
 
 Simple text based game with varying weapons and enemies with unique attributes.
 
-#### User registration/log in
+### User registration/log in
 
 - Prompt for a username/character name
 - Details saved to a .json file
 - Allow multiple users to be created
 
-#### Main Menu
+### Main Menu
 
 - Player can choose to battle, go to the shop or exit program.
 
-#### Shop
+### Shop
 
 - Players will be able to spend gold for weapons with unique attributes and values
 - A character inventory is stored and items are able to be sold for gold
 
-#### Battle
+### Battle
 
 - Players will battle with various enemies in a linear order (goblins, dragons etc.)
 - Enemies will have weapon types that are strong and weak against (for example a flying enemy would be weak to a bow)
 - Gold and items will be earned upon defeating enemies
 - Upon defeat, players will be sent back to the main menu to try again
 
-#### Goal
+### Goal
 
 - There will be a win condition by beating the final boss
 
