@@ -29,20 +29,20 @@ old_dagger = Weapon(name="Old Dagger",
 
 sharp_fang = Weapon(name="Sharp Fang",
                         weapon_type="sharp",
-                        damage=4,
+                        damage=3,
                         value=0)
 
 poisonous_fang = Weapon(name="Poisonous Fang",
                         weapon_type="sharp",
-                        damage=7,
+                        damage=6,
                         value=0)
 
 fire_breath = Weapon(name="Fire Breath",
                         weapon_type="fire",
-                        damage=10,
+                        damage=9,
                         value=0)
 
 magic_staff = Weapon(name="Magic Staff",
                         weapon_type="magic",
-                        damage=13,
+                        damage=15,
                         value=0)

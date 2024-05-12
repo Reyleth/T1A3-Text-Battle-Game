@@ -14,6 +14,7 @@ class Character:
         self.weapon = weapons.rusty_sword
 
     def attack(self, target) -> None:
+        '''Attack a target character'''
         damage = self.weapon.damage
 
         # 20% chance for a critical hit
@@ -128,7 +129,11 @@ dragon_scale = Item("Dragon Scale", 20)
 wizard_hat = Item("Wizard Hat", 100)
 
 goblin = Enemy(
-    name="Goblin", health=100, weapon=weapons.old_dagger, gold=10, inventory=[old_sock],
+    name="Goblin",
+    health=100,
+    weapon=weapons.old_dagger,
+    gold=10,
+    inventory=[old_sock],
 )
 
 flying_bat = Enemy(

@@ -3,7 +3,7 @@
         "name": "Iron Sword",
         "weapon_type": "sharp",
         "damage": 6,
-        "value": 8,
+        "value": 10,
         "type": "Weapon",
         "progress": 2
     },
@@ -11,7 +11,7 @@
         "name": "Short Bow",
         "weapon_type": "ranged",
         "damage": 9,
-        "value": 8,
+        "value": 22,
         "type": "Weapon",
         "progress": 3
     },
@@ -19,15 +19,15 @@
         "name": "Heavy Hammer",
         "weapon_type": "blunt",
         "damage": 12,
-        "value": 12,
+        "value": 35,
         "type": "Weapon",
         "progress": 4
     },
     {
         "name": "Hero's Sword",
         "weapon_type": "sharp",
-        "damage": 15,
-        "value": 15,
+        "damage": 16,
+        "value": 70,
         "type": "Weapon",
         "progress": 5
     },

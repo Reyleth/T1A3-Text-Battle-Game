@@ -95,7 +95,7 @@ def shop(current_user: dict):
                     )
         # if no weapons are available for purchase, return to the shop
         if not shop_weapons:
-            print("There are no weapons available for purchase at this time.")
+            print("There are no weapons available for purchase at this time.\n")
             input("Press Enter to return to the shop...")
             return shop(current_user)
         buy_weapon = input("Enter the name of the weapon you would like to buy: ")
@@ -118,6 +118,7 @@ def shop(current_user: dict):
     elif choice == "2":
         clear_screen()
         view_inventory(current_user)
+        # if the player only has one weapon, they cannot sell it
         if len(current_user.inventory) == 1 and isinstance(current_user.inventory[0], Weapon):
             print("You cannot sell your only weapon.")
             input("Press Enter to return to the shop...")
@@ -150,11 +151,11 @@ def shop(current_user: dict):
 def scout(current_user: dict):
     '''Scout the next battle'''
     progress_messages = {
-        1: "You see a Goblin in the distance.",
-        2: "You see a flying bat in the distance.",
-        3: "You see a giant spider in the distance.",
-        4: "You see a dragon in the distance.",
-        5: "You see the evil wizard in the distance.",
+        1: "\nYou see a goblin in the distance. It is wielding an old dagger\n",
+        2: "\nYou see a flying bat in the distance. It's sharp fangs glisten in the moon.\n",
+        3: "\nYou see a giant spider in the distance. It's poisonous fangs drip with venom.\n",
+        4: "\nYou see a dragon in the distance. It's fiery breath lights up the nearby pastures.\n",
+        5: "\nYou see the evil wizard in the distance. He is wielding a powerful magic staff.\n",
     }
 
     message = progress_messages.get(current_user.progress)
