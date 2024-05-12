@@ -24,3 +24,9 @@ source .venv/bin/activate
 
 # Install packages from requirements.txt
 pip3 install -r requirements.txt
+
+# Change Directory to the main.py file
+cd src
+
+# Create an executable for the application
+pyinstaller --onefile -y --distpath ./src main.py
