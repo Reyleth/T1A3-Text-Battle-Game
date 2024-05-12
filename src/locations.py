@@ -1,3 +1,4 @@
+'''This module contains the main game locations and menus for navigating the game.'''
 from art import tprint
 import json
 import sys
@@ -7,6 +8,7 @@ from weapons import Weapon
 
 
 def town(current_user: dict):
+    '''Main menu for the game'''
     clear_screen()
     tprint("Town Square")
     print(
@@ -54,6 +56,7 @@ def town(current_user: dict):
 
 
 def shop(current_user: dict):
+    '''Shop menu for the game where the player can buy and sell weapons and items'''
     tprint("Shop")
     print(
         f"""
@@ -139,6 +142,7 @@ def shop(current_user: dict):
 
 
 def scout(current_user: dict):
+    '''Scout the next battle'''
     progress_messages = {
         1: "You see a Goblin in the distance.",
         2: "You see a flying bat in the distance.",
@@ -157,6 +161,7 @@ def scout(current_user: dict):
 
 
 def view_inventory(current_user):
+    '''View the player's inventory'''
     # iterate over inventory and print each weapon in an unordered list followed by each item
     print(
         """
@@ -177,6 +182,7 @@ def view_inventory(current_user):
     )
 
 def ending(current_user) -> None:
+    '''Ending of the game'''
     if current_user.progress == 6:
         # Add ending code here TODO
         clear_screen()

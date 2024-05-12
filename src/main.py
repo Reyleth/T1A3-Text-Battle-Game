@@ -1,3 +1,4 @@
+'''Main file to run the game'''
 from art import tprint
 from character import Hero
 from locations import town

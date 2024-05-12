@@ -1,10 +1,13 @@
+'''Module for weapons that are to be used in battle and the shop'''
 class Weapon:
+    '''Class for weapons that can be equipped by the Hero and used in battle'''
     def __init__(self, name: str, weapon_type: str, damage: int, value: int) -> None:
         self.name = name
         self.weapon_type = weapon_type
         self.damage = damage
         self.value = value
     def to_dict(self):
+        '''Convert Weapon object to dictionary for saving to file'''
         return {
             "name": self.name,
             "weapon_type": self.weapon_type,

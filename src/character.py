@@ -1,9 +1,11 @@
+'''Module for the Character class and its subclasses'''
 import random
 import weapons
 from health_bar import HealthBar
 
 
 class Character:
+    '''Class for all characters in the game'''
     def __init__(self, name: str, health: int, max_health=100):
         self.name = name
         self.health = health
@@ -28,6 +30,7 @@ class Character:
 
 
 class Hero(Character):
+    '''Class for the Hero character'''
     def __init__(
         self,
         name: str,
@@ -45,9 +48,11 @@ class Hero(Character):
         self.health_bar = HealthBar(self, colour="green")
 
     def equip(self, weapon) -> None:
+        '''Equip a weapon from the inventory'''
         self.weapon = weapon
 
     def change_weapon(self) -> None:
+        '''Change the weapon equipped by the Hero'''
         print("Change Weapon")
         for index, weapon in enumerate(self.inventory):
             print(f"{index + 1}. {weapon.name}")
@@ -66,6 +71,7 @@ class Hero(Character):
             print("Invalid input. Please try again.")
 
     def loot(self, enemy) -> None:
+        '''Loot gold and items from a defeated enemy'''
         self.gold += enemy.gold
         print(f"{self.name} looted {enemy.gold} gold from the {enemy.name}!")
         for item in enemy.inventory:
@@ -74,6 +80,7 @@ class Hero(Character):
         input("Press Enter to continue...")
 
     def to_dict(self):
+        '''Convert Hero object to dictionary for saving to file'''
         return {
             "name": self.name,
             "progress": self.progress,
@@ -92,6 +99,7 @@ class Hero(Character):
 
 
 class Enemy(Character):
+    '''Class for the Enemy characters'''
     def __init__(
         self, name: str, health: int, weapon: str, gold: int, inventory: list
     ) -> None:
@@ -104,6 +112,7 @@ class Enemy(Character):
 
 
 class Item:
+    '''Class for items that can be looted from enemies'''
     def __init__(self, name, value):
         self.name = name
         self.value = value

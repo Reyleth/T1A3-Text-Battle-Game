@@ -1,12 +1,11 @@
+'''A module containing the HealthBar class.'''
 import os
 
 os.system("")
 
 
 class HealthBar:
-    """
-    A class representing a health bar.
-    """
+    '''A class representing a health bar.'''
 
     symbol_remaining: str = "█"
     symbol_lost: str = "_"
@@ -30,15 +29,15 @@ class HealthBar:
                  length: int = 20,
                  is_coloured: bool = True,
                  colour: str = "") -> None:
-        """
+        '''
         Initialize a HealthBar object.
 
         Args:
             entity: The entity associated with the health bar.
             length: The length of the health bar.
             is_colored: Whether to display the health bar in color.
-            color: The color of the health bar.
-        """
+            colour: The colour of the health bar.
+        '''
         self.entity = entity
         self.length = length
         self.max_value = entity.health_max
@@ -48,15 +47,11 @@ class HealthBar:
         self.color = self.colours.get(colour) or self.colours["default"]
 
     def update(self) -> None:
-        """
-        Update the current value of the health bar.
-        """
+        '''Update the current value of the health bar.'''
         self.current_value = self.entity.health
 
     def draw(self) -> None:
-        """
-        Draw the health bar.
-        """
+        '''Draw the health bar to the terminal.'''
         remaining_bars = round(self.current_value / self.max_value * self.length)
         lost_bars = self.length - remaining_bars
         print(f"{self.entity.name}'s HEALTH: {self.entity.health}/{self.entity.health_max}")

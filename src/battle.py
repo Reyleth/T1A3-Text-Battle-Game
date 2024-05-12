@@ -1,3 +1,4 @@
+'''This module contains the battle function to create a battle between the hero and an enemy.'''
 import character
 from utilities import clear_screen
 
@@ -10,6 +11,7 @@ enemy_list = [
 ]
 
 def battle(current_user: classmethod):
+    '''Battle the enemy'''
     hero = current_user
     # match hero to enemy based on progress
     enemy = enemy_list[hero.progress - 1]

@@ -4,9 +4,9 @@
 
 ## Sources
 
-<https://www.messletters.com/en/big-text/>
+ASCII artwork: <https://pypi.org/project/art>
 
-<https://pypi.org/project/art>
+Testing framework: <https://docs.pytest.org/en/8.2.x/>
 
 ## Repository
 
@@ -28,7 +28,7 @@ The `town()` function in locations.py serves as the main menu for the game. It d
 
 - The function takes a Hero class in the form of current_user as an argument, which contains the current state of the user's game.
 
-- It first clears the screen and prints a welcome message to the player, along with a list of available actions:
+- It first prints a welcome message to the player, along with a list of available actions:
     1. Go to the shop
     2. Scout the next battle
     3. Go to the next battle
@@ -37,9 +37,9 @@ The `town()` function in locations.py serves as the main menu for the game. It d
 - The player is then prompted to enter a number to select an option.
 
 - Depending on the player's choice, the function will:
-  - Call the shop function if the player chooses to go to the shop, then return to the main menu.
+  - Call the shop function if the player chooses to go to the shop.
   - Call the scout function if the player chooses to scout the next battle.
-  - Call the battle function if the player chooses to go to the next battle. If the player wins the battle, their progress is incremented and saved. If their progress reaches 6, the ending function is called. Otherwise, the function returns to the main menu.
+  - Call the battle function if the player chooses to go to the next battle. If the player wins the battle, their progress is incremented and saved. If their progress reaches 6, the game ending function is called. Otherwise, the function returns to the main menu.
   - Call the view_inventory function if the player chooses to view their inventory, then return to the main menu.
   - Exit the game if the player chooses to log out.
 If the player enters an invalid input, they are prompted to try again and the function returns to the main menu.
@@ -68,9 +68,9 @@ The `shop()` function in `locations.py` allows the player to interact with the i
 
 ### Battle
 
-The `battle()` function in `battle.py` handles the combat between the player and the enemies. Here's a summary of its functionality:
+`battle.py` handles the combat between the player and the enemies. Here's a summary of its functionality:
 
-- The function takes a `current_user` object as an argument, which represents the player's character.
+- The `battle()` function takes a `current_user` object as an argument, which represents the player's character.
 
 - It first matches the player to an enemy based on the player's progress. The enemy is selected from a predefined list of enemies.
 

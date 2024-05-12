@@ -1,13 +1,16 @@
+'''Utility functions for the game'''
 import json
 import os
 from character import Item
 from weapons import Weapon
 
 def clear_screen():
+    '''Clear the terminal screen'''
     os.system('clear' if os.name == 'posix' else 'cls')
 
 # Save current_user class object to a JSON file
 def save_data(current_user: classmethod):
+    '''Save current_user class object to a JSON file'''
     filename = "src/user_data/users.json"
     data = {}
 
@@ -34,6 +37,7 @@ def save_data(current_user: classmethod):
     return current_user
 
 def dict_to_class(dict_obj):
+    '''Convert a dictionary to a class object'''
     if dict_obj['type'] == 'Item':
         return Item(dict_obj['name'], dict_obj['value'])
     elif dict_obj['type'] == 'Weapon':

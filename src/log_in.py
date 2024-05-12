@@ -1,9 +1,11 @@
+'''This module contains functions to log in or create a new user'''
 import json
 import os
 
 
 # Prompt user to log in or create a new user
 def start():
+    '''Start the game and prompt user to log in or create a new user'''
     print("Welcome to the Terminal Battle Game!")
     print("Do you have an existing character?")
     print("1. Yes")
@@ -34,6 +36,7 @@ def start():
 
 # Create a new user and export to a JSON file
 def create_user() -> dict:
+    '''Create a new user and export to a JSON file'''
     username = input("Enter a hero name: ")
     user_data = "./src/user_data/users.json"
     os.makedirs(os.path.dirname(user_data), exist_ok=True)
@@ -71,6 +74,7 @@ def create_user() -> dict:
 
 # Log in to existing user and import user data from JSON file
 def log_in() -> dict:
+    '''Log in to existing user and import user data from JSON file'''
     username = input("Enter your hero name: ")
     user_data = "./src/user_data/users.json"
 
