@@ -1,6 +1,40 @@
 # T1A3-Text-Battle-Game
 
-## Terminal Application for Coder Academy assignment
+## How to Play
+
+Clone this repository and run `install_requirements.sh` to setup all nessessary dependancy files and create an executable within a newly created `dist` folder. Upon your first time running the game a `user_data` directory will be created to save your progress to a `users.json` file.
+
+### Original Idea/ Development Goal
+
+Simple text based game with varying weapons and enemies with unique attributes.
+
+#### User registration/log in
+
+- Prompt for a username/character name
+- Details saved to a .json file
+- Allow multiple users to be created
+
+#### Main Menu
+
+- Player can choose to battle, go to the shop or exit program.
+
+#### Shop
+
+- Players will be able to spend gold for weapons with unique attributes and values
+- A character inventory is stored and items are able to be sold for gold
+
+#### Battle
+
+- Players will battle with various enemies in a linear order (goblins, dragons etc.)
+- Enemies will have weapon types that are strong and weak against (for example a flying enemy would be weak to a bow)
+- Gold and items will be earned upon defeating enemies
+- Upon defeat, players will be sent back to the main menu to try again
+
+#### Goal
+
+- There will be a win condition by beating the final boss
+
+Ideally I'd like to have data saved to text files such as their current inventory, gold and progress so that players can continue where they left off. I would aim to keep this program simple at first and expand upon it if I have the time before the submission date.
 
 ## Sources
 
@@ -9,6 +43,8 @@ ASCII artwork: <https://pypi.org/project/art>
 Testing framework: <https://docs.pytest.org/en/8.2.x/>
 
 Executable installer: <https://pyinstaller.org/>
+
+All dependancy files are located in `requirements.txt`
 
 ## Repository
 
@@ -46,7 +82,7 @@ The `town()` function in locations.py serves as the main menu for the game. It d
   - Exit the game if the player chooses to log out.
 If the player enters an invalid input, they are prompted to try again and the function returns to the main menu.
 
-### Shop
+### Shop Function
 
 The `shop()` function in `locations.py` allows the player to interact with the in-game shop. Here's a summary of its functionality:
 
@@ -61,16 +97,16 @@ The `shop()` function in `locations.py` allows the player to interact with the i
 - The player is then prompted to enter a number to select an option.
 
 - Depending on the player's choice, the function will:
-  - Display available weapons for purchase if the player chooses to buy weapons. The weapons are loaded from a JSON file and filtered based on the player's progress. If the player has enough gold, the selected weapon is added to their inventory and the cost is deducted from their gold.
+  - Display available weapons for purchase if the player chooses to buy weapons. The weapons are loaded from a `.json` file and filtered based on the player's progress. If the player has enough gold, the selected weapon is added to their inventory and the cost is deducted from their gold.
   - Allow the player to sell items from their inventory if they choose to sell items. The player cannot sell their only weapon. The value of the sold item is added to the player's gold.
   - Call the `view_inventory` function if the player chooses to view their inventory, then return to the shop.
   - Return to the main menu if the player chooses to exit.
 
 - If the player enters an invalid input, they are prompted to try again and the function returns to the shop.
 
-### Battle
+### Battle Function
 
-`battle.py` handles the combat between the player and the enemies. Here's a summary of its functionality:
+`battle.py` handles the combat between the player and enemies. Here's a summary of its functionality:
 
 - The `battle()` function takes a `current_user` object as an argument, which represents the player's character.
 
@@ -94,21 +130,18 @@ The `shop()` function in `locations.py` allows the player to interact with the i
 
 - If the enemy's health drops to 0 or below, the function prints a victory message, calls the `loot` function of the player's character to loot the enemy, and returns `True`.
 
-### Progression
+### Progression System
 
-Progression in terminal battle is determined by a `progress` value that is tied to each player's character
+Progression in terminal battle is determined by a `progress` value that is tied to each player's character. Player's will progress by defeating each boss until all are defeated.
 
 ## Implementation Plan
 
 Github Projects was used for the planning of development. It can be accessed [here](https://github.com/Reyleth/T1A3-Text-Battle-Game/blob/main/README.md).
 
+An image of the progress
 [progress image](./docs/progress_image.png)
 
 ## FAQ
-
-### Q: How do I start a new game?
-
-A: To start a new game, run the bash script `install_requirements.sh` in your terminal. You may need administrator privileges for this. Then run the file `main.py` with python to begin.
 
 ### Q: How do I save my progress?
 
@@ -120,7 +153,7 @@ A: To exit the game, simply choose the "Log out" option from the main menu.
 
 ### Q: How do I win the game?
 
-A: The game is won by defeating all the enemies that threaten PythonLand. Once you achieve this, the game will display the ending message.
+A: The game is won by defeating all the enemies that threaten PythonLand. Once you achieve this, the game will end.
 
 ### Q: How do I report a bug or provide feedback?
 
@@ -128,4 +161,4 @@ A: You can report bugs or provide feedback by creating an issue on the GitHub re
 
 ### Q: Are there any known issues?
 
-A: Currently, there are no known issues. However, if you encounter any problems while playing the game, please let us know so that we can investigate and address them.
+A: If you waste your gold you will be forced to start a new character as you can't afford new weapons. I intend to add a way to earn gold outside of boss battles. If you encounter any other problems while playing the game, please let me know so that we can investigate and address them.
