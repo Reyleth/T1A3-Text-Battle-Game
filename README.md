@@ -1,6 +1,10 @@
 # T1A3-Text-Battle-Game
 
+Welcome to Terminal Battle
+
 ## How to Play
+
+Python is required for this program to run, you may install Python [here](https://www.python.org/downloads/)
 
 Clone this repository and run `install_requirements.sh` to setup all nessessary dependancy files and create an executable within a newly created `dist` folder. Upon your first time running the game a `user_data` directory will be created to save your progress to a `users.json` file.
 
