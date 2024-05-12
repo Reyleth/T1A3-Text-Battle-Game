@@ -8,6 +8,8 @@ ASCII artwork: <https://pypi.org/project/art>
 
 Testing framework: <https://docs.pytest.org/en/8.2.x/>
 
+Executable installer: <https://pyinstaller.org/>
+
 ## Repository
 
 The github repository is located at <https://github.com/Reyleth/T1A3-Text-Battle-Game>

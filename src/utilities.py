@@ -1,6 +1,7 @@
 '''Utility functions for the game'''
 import json
 import os
+import sys
 from character import Item
 from weapons import Weapon
 
@@ -11,7 +12,12 @@ def clear_screen():
 # Save current_user class object to a JSON file
 def save_data(current_user: classmethod):
     '''Save current_user class object to a JSON file'''
-    filename = "src/user_data/users.json"
+    # Get the directory of the executable or source code
+    if getattr(sys, "frozen", False):
+        exe_dir = os.path.dirname(sys.executable)
+    else:
+        exe_dir = os.path.dirname(os.path.abspath(__file__))
+    filename = os.path.join(exe_dir, 'user_data/users.json')
     data = {}
 
     # Load existing data

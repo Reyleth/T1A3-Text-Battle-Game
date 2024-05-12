@@ -29,15 +29,7 @@ class HealthBar:
                  length: int = 20,
                  is_coloured: bool = True,
                  colour: str = "") -> None:
-        '''
-        Initialize a HealthBar object.
-
-        Args:
-            entity: The entity associated with the health bar.
-            length: The length of the health bar.
-            is_colored: Whether to display the health bar in color.
-            colour: The colour of the health bar.
-        '''
+        '''Create the health bar object.'''
         self.entity = entity
         self.length = length
         self.max_value = entity.health_max

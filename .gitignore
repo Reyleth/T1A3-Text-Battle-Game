@@ -2,5 +2,8 @@ __pycache__
 users.json
 .venv
 .DS_Store
+.pytest_cache/
 tests_to_run.txt
 TODO.txt
+build/
+dist/

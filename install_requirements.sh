@@ -29,4 +29,4 @@ pip3 install -r requirements.txt
 cd src
 
 # Create an executable for the application
-pyinstaller --onefile -y --distpath ./src main.py
+pyinstaller main.spec

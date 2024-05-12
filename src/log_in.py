@@ -1,7 +1,26 @@
 '''This module contains functions to log in or create a new user'''
 import json
 import os
+import sys
 
+# Get the directory of the executable or source code
+if getattr(sys, "frozen", False):
+    exe_dir = os.path.dirname(sys.executable)
+else:
+    exe_dir = os.path.dirname(os.path.abspath(__file__))
+
+# Get the path to the users.json file
+save_data = os.path.join(exe_dir, 'user_data/users.json')
+
+#Check if the directory exists and create it if not
+if not os.path.exists(os.path.dirname(save_data)):
+    os.makedirs(os.path.dirname(save_data))
+
+# Check if the file exists
+if not os.path.exists(save_data):
+    # If the file doesn't exist, create it with an empty list
+    with open(save_data, 'w', encoding='utf-8') as f:
+        json.dump([], f)
 
 # Prompt user to log in or create a new user
 def start():
@@ -38,7 +57,7 @@ def start():
 def create_user() -> dict:
     '''Create a new user and export to a JSON file'''
     username = input("Enter a hero name: ")
-    user_data = "./src/user_data/users.json"
+    user_data = os.path.join(exe_dir, "user_data/users.json")
     os.makedirs(os.path.dirname(user_data), exist_ok=True)
 
     # Load existing users
@@ -76,7 +95,9 @@ def create_user() -> dict:
 def log_in() -> dict:
     '''Log in to existing user and import user data from JSON file'''
     username = input("Enter your hero name: ")
-    user_data = "./src/user_data/users.json"
+    user_data = os.path.join(exe_dir, "user_data/users.json")
+    print(f"Absolute path to users.json: {os.path.abspath(user_data)}")
+    users = []
 
     # Load existing users
     if os.path.exists(user_data):

@@ -2,6 +2,7 @@
 from art import tprint
 import json
 import sys
+import os
 from battle import battle
 from utilities import clear_screen, save_data
 from weapons import Weapon
@@ -57,6 +58,7 @@ def town(current_user: dict):
 
 def shop(current_user: dict):
     '''Shop menu for the game where the player can buy and sell weapons and items'''
+    clear_screen()
     tprint("Shop")
     print(
         f"""
@@ -73,10 +75,13 @@ def shop(current_user: dict):
     )
     choice = input("Enter a number to select an option: ")
     if choice == "1":
-        print("Buy weapons")
+        clear_screen()
         shop_weapons = []
         # read shop weapons from JSON file
-        with open("src/sys_data/shop_weapons.json", "r", encoding="utf-8") as file:
+        base_dir = getattr(sys, "_MEIPASS", os.path.abspath(os.path.dirname(__file__)))
+        weapons_data = os.path.join(base_dir, "sys_data/shop_weapons.json")
+        with open(weapons_data, "r", encoding="utf-8") as file:
+            print("Available weapons:\n")
             # load all weapons that match current_user progress
             for weapon in json.load(file):
                 if weapon["progress"] <= current_user.progress:
@@ -86,7 +91,7 @@ def shop(current_user: dict):
                     }
                     shop_weapons.append(Weapon(**weapon_args))
                     print(
-                        f"{weapon['name']} - Damage: {weapon['damage']} - Value: {weapon['value']}"
+                        f"{weapon['name']} - Damage: {weapon['damage']} - Value: {weapon['value']}\n"
                     )
         # if no weapons are available for purchase, return to the shop
         if not shop_weapons:
@@ -111,7 +116,7 @@ def shop(current_user: dict):
         input("Press Enter to return to the shop...")
         return shop(current_user)
     elif choice == "2":
-        print("Sell items")
+        clear_screen()
         view_inventory(current_user)
         if len(current_user.inventory) == 1 and isinstance(current_user.inventory[0], Weapon):
             print("You cannot sell your only weapon.")
@@ -130,6 +135,7 @@ def shop(current_user: dict):
         input("Press Enter to return to the shop...")
         return shop(current_user)
     elif choice == "3":
+        clear_screen()
         view_inventory(current_user)
         input("Press Enter to return to the shop...")
         return shop(current_user)
@@ -164,10 +170,8 @@ def view_inventory(current_user):
     '''View the player's inventory'''
     # iterate over inventory and print each weapon in an unordered list followed by each item
     print(
-        """
-      -+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-      Inventory:
-      """
+        "-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+\n"
+        "Inventory:\n"
         + "\n".join(
             (
                 f"{i.name} - Damage: {i.damage} - Value: {i.value}"
@@ -176,9 +180,7 @@ def view_inventory(current_user):
             )
             for i in current_user.inventory
         )
-        + """
-      -+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-      """
+        + "\n-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+\n"
     )
 
 def ending(current_user) -> None:
@@ -191,7 +193,7 @@ def ending(current_user) -> None:
           -+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
           You have defeated the evil wizard and saved Pythonland!
 
-            Thank you for playing Terminal Battle, Hero {current_user.name}!
+          Thank you for playing Terminal Battle, Hero {current_user.name}!
           -+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
           """
         
