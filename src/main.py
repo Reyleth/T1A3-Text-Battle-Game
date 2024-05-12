@@ -36,7 +36,6 @@ def run():
             town(current_user)
         elif current_user.progress == 6:
             print("You have completed the game!")
-            # Add ending code here
             break
         else:
             print("Game Over")

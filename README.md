@@ -78,6 +78,7 @@ The `town()` function in locations.py serves as the main menu for the game. It d
     3. Go to the next battle
     4. View inventory
     5. Log out
+
 - The player is then prompted to enter a number to select an option.
 
 - Depending on the player's choice, the function will:
@@ -86,6 +87,7 @@ The `town()` function in locations.py serves as the main menu for the game. It d
   - Call the battle function if the player chooses to go to the next battle. If the player wins the battle, their progress is incremented and saved. If their progress reaches 6, the game ending function is called. Otherwise, the function returns to the main menu.
   - Call the view_inventory function if the player chooses to view their inventory, then return to the main menu.
   - Exit the game if the player chooses to log out.
+
 If the player enters an invalid input, they are prompted to try again and the function returns to the main menu.
 
 ### Shop Function
