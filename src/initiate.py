@@ -1,4 +1,5 @@
-'''This file contains the initiate function which is called when the game starts. It prints a welcome message to the user.'''
+"""This file contains the initiate function which is called when the game starts. It prints a welcome message to the user."""
+
 from locations import clear_screen
 from utilities import save_data
 from weapons import rusty_sword

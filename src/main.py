@@ -1,4 +1,5 @@
-'''Main file to run the game'''
+"""Main file to run the game"""
+
 from art import tprint
 from character import Hero
 from locations import town
@@ -6,8 +7,9 @@ from log_in import start
 from initiate import initiate
 from utilities import clear_screen, save_data, dict_to_class
 
+
 def run():
-    '''Run the game'''
+    """Run the game"""
     clear_screen()
     # Print Title
     tprint("Terminal Battle")

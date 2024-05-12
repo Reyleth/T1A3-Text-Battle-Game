@@ -13,9 +13,13 @@ enemy_list = [
 def battle(current_user: classmethod):
     '''Battle the enemy'''
     hero = current_user
-    # match hero to enemy based on progress
+    # Check if progress - 1 is a valid index for an enemy in the list
+    if not 0 <= hero.progress - 1 < len(enemy_list):
+        print("Error: Invalid progress level for hero.")
+        return
+    # Match hero to enemy based on progress
     enemy = enemy_list[hero.progress - 1]
-    # reset health values (update this later!!)
+    # Reset health values (update this later!!)
     hero.health = 100
     enemy.health = 100
 
@@ -36,8 +40,9 @@ def battle(current_user: classmethod):
         elif choice == "2":
             hero.change_weapon()
         elif choice == "3":
-            print("You ran away!")
-            break
+            print(f"You run away from the {enemy.name} back to the safety of the town!")
+            input("Press Enter to continue...")
+            return False
         else:
             print("Invalid input. Please try again.")
             continue

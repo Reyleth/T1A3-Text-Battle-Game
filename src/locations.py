@@ -1,4 +1,5 @@
-'''This module contains the main game locations and menus for navigating the game.'''
+"""This module contains the main game locations and menus for navigating the game."""
+
 from art import tprint
 import json
 import sys
@@ -9,7 +10,7 @@ from weapons import Weapon
 
 
 def town(current_user: dict):
-    '''Main menu for the game'''
+    """Main menu for the game"""
     clear_screen()
     tprint("Town Square")
     print(
@@ -57,7 +58,7 @@ def town(current_user: dict):
 
 
 def shop(current_user: dict):
-    '''Shop menu for the game where the player can buy and sell weapons and items'''
+    """Shop menu for the game where the player can buy and sell weapons and items"""
     clear_screen()
     tprint("Shop")
     print(
@@ -119,7 +120,9 @@ def shop(current_user: dict):
         clear_screen()
         view_inventory(current_user)
         # if the player only has one weapon, they cannot sell it
-        if len(current_user.inventory) == 1 and isinstance(current_user.inventory[0], Weapon):
+        if len(current_user.inventory) == 1 and isinstance(
+            current_user.inventory[0], Weapon
+        ):
             print("You cannot sell your only weapon.")
             input("Press Enter to return to the shop...")
             return shop(current_user)
@@ -149,7 +152,7 @@ def shop(current_user: dict):
 
 
 def scout(current_user: dict):
-    '''Scout the next battle'''
+    """Scout the next battle"""
     progress_messages = {
         1: "\nYou see a goblin in the distance. It is wielding an old dagger\n",
         2: "\nYou see a flying bat in the distance. It's sharp fangs glisten in the moon.\n",
@@ -168,7 +171,7 @@ def scout(current_user: dict):
 
 
 def view_inventory(current_user):
-    '''View the player's inventory'''
+    """View the player's inventory"""
     # iterate over inventory and print each weapon in an unordered list followed by each item
     print(
         "-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+\n"
@@ -184,8 +187,9 @@ def view_inventory(current_user):
         + "\n-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+\n"
     )
 
+
 def ending(current_user) -> None:
-    '''Ending of the game'''
+    """Ending of the game"""
     if current_user.progress == 6:
         # Add ending code here TODO
         clear_screen()
@@ -197,7 +201,6 @@ def ending(current_user) -> None:
           Thank you for playing Terminal Battle, Hero {current_user.name}!
           -+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
           """
-        
         )
         input("Thank you for playing! Press Enter to continue...")
         sys.exit()

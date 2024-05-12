@@ -4,9 +4,11 @@ Welcome to Terminal Battle
 
 ## How to Play
 
-Python is required for this program to run, you may install Python [here](https://www.python.org/downloads/)
+Python & PIP is required for this program to run, you may install Python [here](https://www.python.org/downloads/)
 
 Clone this repository and run `install_requirements.sh` to setup all nessessary dependancy files and create an executable within a newly created `dist` folder. Upon your first time running the game a `user_data` directory will be created to save your progress to a `users.json` file.
+
+**For Mac Users**: A pre-compiled executable is available [here](https://github.com/Reyleth/T1A3-Text-Battle-Game/releases/tag/v0.9)
 
 ### Original Idea/ Development Goal
 
@@ -145,6 +147,8 @@ Github Projects was used for the planning of development. It can be accessed [he
 An image of the progress
 [progress image](./docs/progress_image.png)
 
+The framework of the application was designed while keeping the initial idea as the key aspects to be implemented, these were listed into Github Projects as a list of tasks that needed to be completed.
+
 ## FAQ
 
 ### Q: How do I save my progress?
@@ -161,7 +165,7 @@ A: The game is won by defeating all the enemies that threaten PythonLand. Once y
 
 ### Q: How do I report a bug or provide feedback?
 
-A: You can report bugs or provide feedback by creating an issue on the GitHub repository. Please include as much detail as possible to help us investigate and address the issue.
+A: You can report bugs or provide feedback by creating an issue on the GitHub repository.
 
 ### Q: Are there any known issues?
 

@@ -1,4 +1,5 @@
-'''This module contains functions to log in or create a new user'''
+"""This module contains functions to log in or create a new user"""
+
 import json
 import os
 import sys
@@ -10,21 +11,22 @@ else:
     exe_dir = os.path.dirname(os.path.abspath(__file__))
 
 # Get the path to the users.json file
-save_data = os.path.join(exe_dir, 'user_data/users.json')
+save_data = os.path.join(exe_dir, "user_data/users.json")
 
-#Check if the directory exists and create it if not
+# Check if the directory exists and create it if not
 if not os.path.exists(os.path.dirname(save_data)):
     os.makedirs(os.path.dirname(save_data))
 
 # Check if the file exists
 if not os.path.exists(save_data):
     # If the file doesn't exist, create it with an empty list
-    with open(save_data, 'w', encoding='utf-8') as f:
+    with open(save_data, "w", encoding="utf-8") as f:
         json.dump([], f)
+
 
 # Prompt user to log in or create a new user
 def start():
-    '''Start the game and prompt user to log in or create a new user'''
+    """Start the game and prompt user to log in or create a new user"""
     print("Welcome to the Terminal Battle Game!")
     print("Do you have an existing character?")
     print("1. Yes")
@@ -55,7 +57,7 @@ def start():
 
 # Create a new user and export to a JSON file
 def create_user() -> dict:
-    '''Create a new user and export to a JSON file'''
+    """Create a new user and export to a JSON file"""
     username = input("Enter a hero name: ")
     user_data = os.path.join(exe_dir, "user_data/users.json")
     os.makedirs(os.path.dirname(user_data), exist_ok=True)
@@ -93,7 +95,7 @@ def create_user() -> dict:
 
 # Log in to existing user and import user data from JSON file
 def log_in() -> dict:
-    '''Log in to existing user and import user data from JSON file'''
+    """Log in to existing user and import user data from JSON file"""
     username = input("Enter your hero name: ")
     user_data = os.path.join(exe_dir, "user_data/users.json")
     print(f"Absolute path to users.json: {os.path.abspath(user_data)}")
