@@ -135,7 +135,7 @@ wizard_hat = Item("Wizard Hat", 100)
 
 goblin = Enemy(
     name="Goblin",
-    health=100,
+    health=50,
     weapon=weapons.old_dagger,
     gold=10,
     inventory=[old_sock],
