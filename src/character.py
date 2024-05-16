@@ -143,7 +143,7 @@ goblin = Enemy(
 
 flying_bat = Enemy(
     name="Flying Bat",
-    health=100,
+    health=80,
     weapon=weapons.sharp_fang,
     gold=20,
     inventory=[bat_wing],
@@ -151,7 +151,7 @@ flying_bat = Enemy(
 
 giant_spider = Enemy(
     name="Giant Spider",
-    health=100,
+    health=90,
     weapon=weapons.poisonous_fang,
     gold=30,
     inventory=[spider_silk],
