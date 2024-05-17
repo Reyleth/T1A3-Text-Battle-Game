@@ -43,6 +43,6 @@ def run():
     print("Thank you for playing!")
     return
 
-
+# Run the game if this file is the main file
 if __name__ == "__main__":
     run()
