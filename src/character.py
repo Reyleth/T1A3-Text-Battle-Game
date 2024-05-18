@@ -54,12 +54,13 @@ class Hero(Character):
     def equip(self, weapon) -> None:
         """Equip a weapon from the inventory"""
         self.weapon = weapon
-
+        
     def change_weapon(self) -> None:
         """Change the weapon equipped by the Hero"""
         print("Change Weapon")
-        for index, weapon in enumerate(self.inventory):
-            print(f"{index + 1}. {weapon.name}")
+        for index, item in enumerate(self.inventory):
+            if isinstance(item, weapons.Weapon):
+                print(f"{index + 1}. {item.name}")
         print(f"{len(self.inventory) + 1}. Return to main menu")
         choice = input("Enter a number to select an option: ")
         if choice == str(len(self.inventory) + 1):
@@ -67,7 +68,8 @@ class Hero(Character):
         try:
             choice = int(choice)
             if 0 < choice <= len(self.inventory):
-                self.weapon = self.inventory[choice - 1]
+                weapon_options = [item for item in self.inventory if isinstance(item, weapons.Weapon)]
+                self.weapon = weapon_options[choice - 1]
                 print(f"{self.name} equipped a(n) {self.weapon.name}!")
             else:
                 print("Invalid input. Please try again.")
