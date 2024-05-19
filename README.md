@@ -1,6 +1,6 @@
 # T1A3-Text-Battle-Game
 
-Welcome to Terminal Battle
+Welcome to Terminal Battle. Terminal Battle was created for a python assignment for Coder Academy.
 
 ## How to Play
 
