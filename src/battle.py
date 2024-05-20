@@ -1,4 +1,5 @@
 '''This module contains the battle function to create a battle between the hero and an enemy.'''
+from art import tprint
 import character
 from utilities import clear_screen
 
@@ -26,6 +27,7 @@ def battle(current_user: classmethod):
     print(f"{hero.name} health: {hero.health}")
     print(f"{enemy.name} health: {enemy.health}")
     while hero.health > 0 and enemy.health > 0:
+        tprint(f"{hero.name} vs {enemy.name}")
         print("1. Attack")
         print("2. Change Weapon")
         print("3. Run")
