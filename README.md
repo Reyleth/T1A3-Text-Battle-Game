@@ -172,3 +172,5 @@ A: You can report bugs or provide feedback by creating an issue on the GitHub re
 ### Q: Are there any known issues?
 
 A: If you waste your gold you will be forced to start a new character as you can't afford new weapons. I intend to add a way to earn gold outside of boss battles. If you encounter any other problems while playing the game, please let me know so that we can investigate and address them.
+
+## Thanks for playing!
