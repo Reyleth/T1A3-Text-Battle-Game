@@ -174,3 +174,5 @@ evil_wizard = Enemy(
     gold=50,
     inventory=[wizard_hat],
 )
+
+# add the enemies to the enemy_list
