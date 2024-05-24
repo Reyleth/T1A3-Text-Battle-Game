@@ -176,3 +176,5 @@ evil_wizard = Enemy(
 )
 
 # add the enemies to the enemy_list
+
+#testing function
