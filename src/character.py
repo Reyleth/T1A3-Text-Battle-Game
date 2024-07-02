@@ -175,36 +175,4 @@ evil_wizard = Enemy(
     inventory=[wizard_hat],
 )
 
-# add the enemies to the enemy_list
 
-#testing function
-
-# def test():
-#     """Test the character module"""
-#     hero = Hero("Hero", 0, 100, [])
-#     enemy = Enemy("Enemy", 100, weapons.old_dagger, 10, [])
-#     print(hero.health)
-#     print(enemy.health)
-#     hero.attack(enemy)
-#     print(enemy.health)
-#     print(hero.health)
-#     hero.loot(enemy)
-#     print(hero.gold)
-#     print(hero.inventory)
-#     hero.equip(weapons.sharp_fang)
-#     print(hero.weapon.name)
-#     hero.change_weapon()
-#     print(hero.weapon.name)
-#     hero.change_weapon()
-#     hero.inventory = [weapons.sharp_fang]
-#     hero.change_weapon()
-#     hero.inventory = [weapons.sharp_fang, weapons.magic_staff]
-#     hero.change_weapon()
-#     hero.inventory = [weapons.sharp_fang, weapons.magic_staff, old_sock]
-#     hero.change_weapon()
-#     hero.inventory = [weapons.sharp_fang, weapons.magic_staff, old_sock]
-#     hero.loot(enemy)
-#     print(hero.inventory)
-#     print(hero.gold)
-#     hero.progress = 1
-#     enemy = Enemy("Goblin", 100, weapons.old_dagger, 10, [])
